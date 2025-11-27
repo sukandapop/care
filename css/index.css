@@ -1,0 +1,27 @@
+/* กำหนดขนาดของรูปโปรไฟล์ */
+.profile-image {
+    width: 120px;
+    height: 120px;
+    /* จัดการเส้นขอบและเงาตามต้องการ */
+    border: 4px solid rgba(255, 255, 255, 0.7);
+    
+}
+
+/* ลบขีดเส้นใต้และกำหนดรูปแบบลิงก์สำหรับเมนู */
+.menu-item {
+    text-decoration: none;
+    color: #000; /* สีข้อความดำ */
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none; /* ลบขอบ card */
+}
+
+/* Effect เมื่อวางเมาส์เหนือปุ่ม */
+.menu-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ปรับสีพื้นหลังหลัก */
+.bg-primary {
+    background-color: #5d98ff !important; 
+}
