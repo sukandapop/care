@@ -32,20 +32,10 @@
     flex-direction: column;
     align-items: center;
     transition: 0.3s;
+    font-size: large;
 }
 
-.bottom-nav a i {
-    font-size: 22px;
-    margin-bottom: 3px;
-}
 
-.bottom-nav a:hover {
-    color: #a5c422; /* สีปุ่ม appointment hover */
-}
-
-.bottom-nav a.active {
-    color: #a5c422; /* เน้นหน้าปัจจุบัน */
-}
 
 @media (min-width: 768px) {
   .bottom-nav {
@@ -54,24 +44,20 @@
 }
 </style>
 
-<div class="bottom-nav">
+<div class="bottom-nav ">
     <a href="index.php" class="active">
         <i class="fa-solid fa-house"></i>
         <span>หน้าแรก</span>
     </a>
-    <a href="appointment.php">
+    <a href="appointment.php" class="active">
         <i class="fa-solid fa-calendar-check"></i>
         <span>นัดหมาย</span>
     </a>
-    <a href="test.php">
+    <a href="take_medicine.php" class="active">
         <i class="fa-solid fa-users"></i>
-        <span>เยี่ยมบ้าน</span>
+        <span>รับประทานยา</span>
     </a>
-    <a href="#news">
-        <i class="fa-solid fa-book-open"></i>
-        <span>ความรู้</span>
-    </a>
-    <a href="#contact">
+    <a href="#contact"class="active">
         <i class="fa-solid fa-comments"></i>
         <span>ปรึกษา</span>
     </a>
