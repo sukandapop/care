@@ -177,7 +177,8 @@
             margin-left: 15px;
         }
 
-        .appointment-btn-modern .nav-link {
+        /* ใช้ .nav-link แทน .appointment-btn-modern .nav-link */
+        .nav-modern .appointment-btn-modern > a.nav-link {
             background: linear-gradient(135deg, #4cc9f0, #5d98ff);
             color: white !important;
             border-radius: 10px;
@@ -187,7 +188,7 @@
             box-shadow: 0 4px 15px rgba(93, 152, 255, 0.3);
         }
 
-        .appointment-btn-modern .nav-link:hover {
+        .nav-modern .appointment-btn-modern > a.nav-link:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(93, 152, 255, 0.4);
             background: linear-gradient(135deg, #3ab8e0, #4a87f5);
@@ -199,12 +200,20 @@
 
         /* User Menu Modern */
         .user-menu-modern {
-            display: flex;
-            align-items: center;
             margin-left: 20px;
             position: relative;
         }
 
+        @media (min-width: 992px) {
+            /* สำหรับ Desktop ให้แสดง Dropdown ข้างๆ เมนูหลัก */
+            .user-menu-modern {
+                 /* ให้นำออกจาก ul เพื่อให้วางข้างๆ ul ได้ */
+                 display: flex;
+                 align-items: center;
+                 margin-left: 20px;
+            }
+        }
+        
         .user-menu-modern .user-avatar {
             width: 45px;
             height: 45px;
@@ -215,7 +224,6 @@
             justify-content: center;
             color: white;
             font-weight: 600;
-            margin-right: 10px;
             box-shadow: 0 4px 10px rgba(93, 152, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -240,6 +248,7 @@
             display: flex;
             align-items: center;
             transition: all 0.2s ease;
+            color: #000000ff;
         }
 
         .user-menu-modern .dropdown-item i {
@@ -253,7 +262,7 @@
             color: #4cc9f0;
         }
 
-        /* Custom Toggler Button Modern - แก้ไขแล้ว */
+        /* Custom Toggler Button Modern */
         .navbar-toggler-modern {
             border: none;
             padding: 10px;
@@ -299,80 +308,35 @@
             transform: rotate(-45deg) translate(6px, -6px);
         }
 
-        /* Content Area */
-        .content-area {
-            padding: 40px;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .content-title {
-            font-family: 'Kanit', sans-serif;
-            font-weight: 600;
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .content-subtitle {
-            font-family: 'Kanit', sans-serif;
-            font-size: 1.2rem;
-            color: #7e8c9e;
-            max-width: 600px;
-            line-height: 1.6;
-        }
-
         /* Responsive */
         @media (max-width: 991px) {
             .nav-modern {
                 text-align: center;
                 padding-top: 20px;
+                /* ปรับให้เมนูหลักเต็มพื้นที่ด้านบนเมนูผู้ใช้ */
             }
 
             .nav-modern .nav-item {
                 margin: 5px 0;
             }
+            
+            .user-menu-wrapper {
+                /* จัดให้ user menu อยู่ด้านล่างสุดและตรงกลางในมุมมองมือถือ */
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                padding-bottom: 10px;
+                border-top: 1px solid #eee;
+                padding-top: 15px;
+            }
 
             .appointment-btn-modern {
-                margin: 15px 0 0 0;
+                margin: 5px 0 0 0 !important;
             }
-
+            
             .user-menu-modern {
-                margin: 20px 0 0 0;
-                justify-content: center;
-                flex-direction: column;
-            }
-
-            .user-menu-modern .user-avatar {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .brand-title {
-                font-size: 1.5rem;
-            }
-            
-            .brand-subtitle {
-                font-size: 0.8rem;
-            }
-            
-            .nav-modern .nav-link {
-                padding: 8px 15px;
-                font-size: 0.95rem;
-            }
-
-            .content-title {
-                font-size: 2rem;
-            }
-
-            .content-subtitle {
-                font-size: 1rem;
+                margin-left: 0;
             }
         }
     </style>
@@ -380,7 +344,6 @@
 
 <body>
     <div class="preview-container">
-        <!-- Modern Care Connect Navbar -->
         <nav class="navbar navbar-expand-lg navbar-modern">
             <div class="container-fluid">
                 <div class="brand-container">
@@ -393,7 +356,6 @@
                     </a>
                 </div>
 
-                <!-- เพิ่ม class "navbar-toggler" เพื่อให้ Bootstrap ทำงานได้ถูกต้อง -->
                 <button class="navbar-toggler navbar-toggler-modern" type="button" data-bs-toggle="collapse" data-bs-target="#modernNavbar" aria-controls="modernNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -404,45 +366,51 @@
                     <ul class="navbar-nav ms-auto nav-modern">
                         <li class="nav-item">
                             <a class="nav-link active" href="index.php">
-                                <i class="fa-solid fa-house"></i>
-                                หน้าแรก
+                                <i class="fa-solid fa-house"></i> หน้าแรก
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="profile.php">
-                                <i class="fa-solid fa-user"></i>
-                                โปรไฟล์
+                            <a class="nav-link" href="take_medicine.php">
+                                <i class="fa-solid fa-pills"></i> รับประทานยา
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="services.php">
-                                <i class="fa-solid fa-hand-holding-medical"></i>
-                                บริการ
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="doctors.php">
-                                <i class="fa-solid fa-user-doctor"></i>
-                                แพทย์
-                            </a>
-                        </li>
-                        <li class="nav-item appointment-btn-modern">
                             <a class="nav-link" href="appointment.php">
-                                <i class="fa-solid fa-calendar-check"></i>
-                                นัดหมาย
+                                <i class="fa-solid fa-hand-holding-medical"></i> นัดหมาย
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa-solid fa-user-doctor"></i> คลังความรู้
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="health_report.php">
+                                <i class="fa-solid fa-calendar-check"></i> รายงานสุขภาพ
                             </a>
                         </li>
                     </ul>
 
-                    <div class="user-menu-modern">
-                        <div class="user-avatar" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="user-menu-wrapper d-lg-none">
+                        <ul class="navbar-nav w-100">
+                             <li class="nav-item">
+                                <a class="nav-link" href="settings.php">
+                                    <i class="fa-solid fa-gear"></i> การตั้งค่า
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="logout.php">
+                                    <i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="user-menu-modern dropdown d-none d-lg-block">
+                        <div class="user-avatar" id="userDropdownDesktop" data-bs-toggle="dropdown" aria-expanded="false">
                             <span>ส</span>
                         </div>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="profile.php"><i class="fa-solid fa-user"></i> โปรไฟล์ของฉัน</a></li>
-                            <li><a class="dropdown-item" href="appointments.php"><i class="fa-solid fa-calendar-days"></i> การนัดหมาย</a></li>
-                            <li><a class="dropdown-item" href="medical-history.php"><i class="fa-solid fa-file-medical"></i> ประวัติการรักษา</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownDesktop">
                             <li><a class="dropdown-item" href="settings.php"><i class="fa-solid fa-gear"></i> การตั้งค่า</a></li>
                             <li><a class="dropdown-item text-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
                         </ul>
@@ -451,60 +419,61 @@
             </div>
         </nav>
 
-        <!-- Content Area -->
-        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ฟังก์ชันสำหรับจัดการการเปิดปิดเมนู
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbarToggler = document.querySelector('.navbar-toggler-modern');
-            const navbarCollapse = document.getElementById('modernNavbar');
-            
-            // ฟังก์ชันสำหรับอัพเดทสถานะของปุ่ม toggler
-            function updateTogglerState() {
-                if (navbarCollapse.classList.contains('show')) {
-                    navbarToggler.classList.add('active');
-                } else {
-                    navbarToggler.classList.remove('active');
-                }
-            }
-            
-            // เพิ่ม event listener สำหรับการแสดงและซ่อนเมนู
-            navbarCollapse.addEventListener('show.bs.collapse', function() {
-                navbarToggler.classList.add('active');
-            });
-            
-            navbarCollapse.addEventListener('hide.bs.collapse', function() {
-                navbarToggler.classList.remove('active');
-            });
-            
-            // ปิดเมนูเมื่อคลิกลิงก์ (สำหรับมือถือ)
-            document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth < 992) {
-                        // ถ้าเป็นหน้าจอเล็ก ให้ปิดเมนูโดยใช้ Bootstrap Collapse API
-                        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                            toggle: false
-                        });
-                        bsCollapse.hide();
-                    }
-                    
-                    // อัพเดทสถานะ active สำหรับ nav-link เท่านั้น
-                    if (this.classList.contains('nav-link')) {
-                        document.querySelectorAll('.nav-link').forEach(item => {
-                            item.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    }
-                });
-            });
-            
-            // ตรวจสอบสถานะเริ่มต้น
-            updateTogglerState();
-        });
+    // ฟังก์ชันสำหรับจัดการการเปิดปิดเมนู
+document.addEventListener('DOMContentLoaded', function() {
+    const navbarToggler = document.querySelector('.navbar-toggler-modern');
+    const navbarCollapse = document.getElementById('modernNavbar');
 
+    // จัดการการคลิกปุ่ม toggler โดยตรง
+    navbarToggler.addEventListener('click', function() {
+        // Bootstrap จะจัดการแสดง/ซ่อนเมนูให้อัตโนมัติ
+        // เราแค่ต้องอัพเดทสถานะของปุ่ม toggler
+        setTimeout(() => {
+            if (navbarCollapse.classList.contains('show')) {
+                navbarToggler.classList.add('active');
+            } else {
+                navbarToggler.classList.remove('active');
+            }
+        }, 10); // รอสักครู่ให้ Bootstrap อัพเดทคลาสก่อน
+    });
+
+    // ปิดเมนูเมื่อคลิกลิงก์ (สำหรับมือถือ)
+    document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+        link.addEventListener('click', function() {
+            // ตรวจสอบเฉพาะเมื่ออยู่บนหน้าจอขนาดเล็ก
+            if (window.innerWidth < 992) {
+                // ปิดเมนูโดยใช้ Bootstrap Collapse API
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, {toggle: false});
+                bsCollapse.hide();
+                navbarToggler.classList.remove('active');
+            }
+
+            // อัพเดทสถานะ active สำหรับ nav-link เท่านั้น
+            if (this.classList.contains('nav-link') && !this.classList.contains('appointment-btn-modern')) {
+                document.querySelectorAll('.nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+            }
+        });
+    });
+
+    // ฟังก์ชันสำหรับตรวจสอบและอัพเดทสถานะเริ่มต้น
+    function updateTogglerState() {
+        if (navbarCollapse.classList.contains('show')) {
+            navbarToggler.classList.add('active');
+        } else {
+            navbarToggler.classList.remove('active');
+        }
+    }
+
+    // ตรวจสอบสถานะเริ่มต้น
+    updateTogglerState();
+});
         // เพิ่มเอฟเฟกต์เมื่อสกอร์ลง
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar-modern');
