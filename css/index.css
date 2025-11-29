@@ -1,6 +1,4 @@
 
-
-
 :root {
     --primary: #4361ee;
     --secondary: #3f37c9;
@@ -48,31 +46,19 @@
 
 .profile-image {
     width: 150px;
-    /* กำหนดขนาดวงกลมที่คุณต้องการ */
     height: 150px;
-    /* ต้องเท่ากับ width เพื่อให้เป็นวงกลม */
     border-radius: 50%;
-    /* ทำให้ div เป็นวงกลม */
-    background-image: url('https://scontent.futh1-1.fna.fbcdn.net/v/t39.30808-6/528889843_4242583999353614_5256576025221137006_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=BBrBNVObQwcQ7kNvwHSIbE6&_nc_oc=AdnlQDVvLAeELU93pF45r85npR-Wx1z3cBnAco_BLwdeN3iCDQOCZnszS-eJcRWrYms&_nc_zt=23&_nc_ht=scontent.futh1-1.fna&_nc_gid=sci9qHtLSTt9stDtyh1zqA&oh=00_AfigGgE63i5Vv59WSn3z2HesR9BKKjeoc9g-SgTKPZqhRQ&oe=692E539F');
+    /* ควรเปลี่ยน path ให้เป็น relative path */
+    background-image: url('../images/Gemini_Generated_Image_50c2mb50c2mb50c2.png');
     background-size: cover;
-    /* ทำให้รูปพื้นหลังครอบคลุมพื้นที่ */
     background-position: center;
-    /* จัดตำแหน่งรูปให้อยู่ตรงกลาง */
     background-repeat: no-repeat;
-    /* ไม่ให้รูปซ้ำ */
-
-    /* คลาส Bootstrap อื่นๆ ยังคงอยู่ */
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3px;
+    
+    margin: 0 auto 3px auto;
     background-color: lightblue;
-    /* ใช้ bg-light แทน */
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
-    /* ใช้ shadow-sm แทน */
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
     display: flex;
-    /* ใช้ d-flex แทน */
     align-items: center;
-    /* ใช้ align-items-center แทน */
     justify-content: center;
-    /* ใช้ justify-content-center แทน */
 }
+
