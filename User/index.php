@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="col">
-                    <a href="#" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
+                    <a href="health_report.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
                         <i class="bi bi-activity fs-2 mb-2 text-primary"></i>
                         <div class="menu-label fw-normal">รายงานสุขภาพ</div>
                     </a>
@@ -65,9 +65,9 @@
                 </div>
 
                 <div class="col">
-                    <a href="#" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
+                    <a href="manual.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
                         <i class="bi bi-question-circle fs-2 mb-2 text-primary"></i>
-                        <div class="menu-label fw-normal">คู่มือการใช้ระบบ</div>
+                        <div class="menu-label fw-normal">คู่มือการใช้งานระบบ</div>
                     </a>
                 </div>
             </div>

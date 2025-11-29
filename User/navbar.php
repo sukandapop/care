@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Care Connect - Simple Navbar</title>
+    <title>Care Connect - Modern Navbar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -36,224 +36,343 @@
             font-family: "Kanit", sans-serif;
             background: linear-gradient(135deg, #f9faffff 0%, #ffffffff 100%);
             min-height: 100vh;
+            padding: 20px;
         }
 
         .preview-container {
             max-width: 1200px;
-            padding: 1rem;
             margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
 
-        /* Navbar Styles */
-        .navbar-custom {
-            background: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 12px 0;
-            border-radius: 12px;
+        /* Modern Navbar Styles */
+        .navbar-modern {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1000;
         }
 
-        .navbar-brand-custom {
-            color: var(--success);
-            font-family: 'Kanit', sans-serif;
-            font-weight: 600;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-decoration: none;
+        .navbar-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4cc9f0, #5d98ff, #7209b7);
         }
 
-        .navbar-brand-custom h1 {
-            font-size: 1.8rem;
-            margin: 0;
-            line-height: 1;
-            color: #4cc9f0;
-        }
-
-        .navbar-brand-custom h3 {
-            font-size: 1rem;
-            margin: 0;
-            font-weight: 400;
-            color: #5d98ff;
-        }
-
-        .nav-custom {
+        .brand-container {
             display: flex;
             align-items: center;
         }
 
-        .nav-custom .nav-item {
-            margin: 0 5px;
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4cc9f0, #5d98ff);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 4px 10px rgba(76, 201, 240, 0.3);
         }
 
-        .nav-custom .nav-link {
-            color: #5d98ff;
+        .logo-icon i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand-modern {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .brand-title {
+            font-family: 'Kanit', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #4cc9f0, #5d98ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .brand-subtitle {
+            font-family: 'Kanit', sans-serif;
+            font-size: 0.9rem;
+            color: #7e8c9e;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .nav-modern {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-modern .nav-item {
+            margin: 0 8px;
+            position: relative;
+        }
+
+        .nav-modern .nav-link {
+            color: #5a677d;
             font-family: 'Kanit', sans-serif;
             font-size: 1rem;
             font-weight: 500;
-            padding: 10px 16px;
-            border-radius: 8px;
+            padding: 10px 18px;
+            border-radius: 10px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .nav-custom .nav-link:hover {
+        .nav-modern .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4cc9f0, #5d98ff);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .nav-modern .nav-link:hover {
+            color: #4cc9f0;
+            background: rgba(93, 152, 255, 0.05);
+        }
+
+        .nav-modern .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .nav-modern .nav-link.active {
+            color: #4cc9f0;
             background: rgba(93, 152, 255, 0.1);
-            color: #2d5fc5;
         }
 
-        .appointment-btn-custom {
-            margin-left: 10px;
+        .nav-modern .nav-link.active::before {
+            width: 100%;
         }
 
-        .appointment-btn-custom .nav-link {
-            background: #5d98ff;
+        .nav-modern .nav-link i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .appointment-btn-modern {
+            margin-left: 15px;
+        }
+
+        .appointment-btn-modern .nav-link {
+            background: linear-gradient(135deg, #4cc9f0, #5d98ff);
             color: white !important;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 600;
-            padding: 10px 20px;
+            padding: 10px 22px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(93, 152, 255, 0.3);
+        }
+
+        .appointment-btn-modern .nav-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(93, 152, 255, 0.4);
+            background: linear-gradient(135deg, #3ab8e0, #4a87f5);
+        }
+
+        .appointment-btn-modern .nav-link i {
+            margin-right: 8px;
+        }
+
+        /* User Menu Modern */
+        .user-menu-modern {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .user-menu-modern .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4cc9f0, #5d98ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-right: 10px;
+            box-shadow: 0 4px 10px rgba(93, 152, 255, 0.3);
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .appointment-btn-custom .nav-link:hover {
-            background: #2d5fc5;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .user-menu-modern .user-avatar:hover {
+            transform: scale(1.05);
         }
 
-        /* Custom Toggler Button */
-        .navbar-toggler-custom {
+        .user-menu-modern .dropdown-menu {
             border: none;
-            padding: 8px 10px;
-            border-radius: 6px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .user-menu-modern .dropdown-item {
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: 'Kanit', sans-serif;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .user-menu-modern .dropdown-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .user-menu-modern .dropdown-item:hover {
+            background: rgba(93, 152, 255, 0.1);
+            color: #4cc9f0;
+        }
+
+        /* Custom Toggler Button Modern - แก้ไขแล้ว */
+        .navbar-toggler-modern {
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
             background: rgba(93, 152, 255, 0.1);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
         }
 
-        .navbar-toggler-custom:focus {
+        .navbar-toggler-modern:focus {
             box-shadow: none;
+            background: rgba(93, 152, 255, 0.2);
         }
 
-        .navbar-toggler-custom .icon-bar {
+        .navbar-toggler-modern .icon-bar {
             display: block;
-            width: 22px;
-            height: 2px;
-            border-radius: 1px;
-            margin: 2px 0;
+            width: 24px;
+            height: 2.5px;
+            border-radius: 2px;
+            margin: 2.5px 0;
             transition: all 0.3s ease;
             background: #5d98ff;
         }
 
-        .navbar-toggler-custom:hover {
+        .navbar-toggler-modern:hover {
             background: rgba(93, 152, 255, 0.2);
         }
 
-        /* User Menu */
-        .user-menu {
+        .navbar-toggler-modern.active .icon-bar:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .navbar-toggler-modern.active .icon-bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .navbar-toggler-modern.active .icon-bar:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Content Area */
+        .content-area {
+            padding: 40px;
+            min-height: 400px;
             display: flex;
             align-items: center;
-            margin-left: 15px;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
         }
 
-        .user-menu a {
-            color: #5d98ff;
-            font-size: 1.2rem;
-            margin-left: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .user-menu a:hover {
-            color: #2d5fc5;
-            transform: translateY(-2px);
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #000000ff 0%, #f46868ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .feature-card h3 {
+        .content-title {
             font-family: 'Kanit', sans-serif;
             font-weight: 600;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
             color: #333;
+            margin-bottom: 20px;
         }
 
-        .feature-card p {
-            color: #666;
+        .content-subtitle {
+            font-family: 'Kanit', sans-serif;
+            font-size: 1.2rem;
+            color: #7e8c9e;
+            max-width: 600px;
             line-height: 1.6;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #5d98ff;
-            font-size: 0.9rem;
-            opacity: 0.8;
         }
 
         /* Responsive */
         @media (max-width: 991px) {
-            .nav-custom {
+            .nav-modern {
                 text-align: center;
-                padding-top: 15px;
+                padding-top: 20px;
             }
 
-            .nav-custom .nav-item {
+            .nav-modern .nav-item {
                 margin: 5px 0;
             }
 
-            .appointment-btn-custom {
-                margin: 10px 0 0 0;
+            .appointment-btn-modern {
+                margin: 15px 0 0 0;
             }
 
-            .user-menu {
-                margin: 15px 0 0 0;
+            .user-menu-modern {
+                margin: 20px 0 0 0;
                 justify-content: center;
+                flex-direction: column;
+            }
+
+            .user-menu-modern .user-avatar {
+                margin-right: 0;
+                margin-bottom: 10px;
             }
         }
 
         @media (max-width: 576px) {
-            .navbar-brand-custom h1 {
+            .brand-title {
                 font-size: 1.5rem;
             }
             
-            .navbar-brand-custom h3 {
-                font-size: 0.85rem;
+            .brand-subtitle {
+                font-size: 0.8rem;
             }
             
-            .nav-custom .nav-link {
-                padding: 8px 12px;
-                font-size: 0.9rem;
+            .nav-modern .nav-link {
+                padding: 8px 15px;
+                font-size: 0.95rem;
+            }
+
+            .content-title {
+                font-size: 2rem;
+            }
+
+            .content-subtitle {
+                font-size: 1rem;
             }
         }
     </style>
@@ -261,89 +380,139 @@
 
 <body>
     <div class="preview-container">
-        <!-- Care Connect Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-custom">
+        <!-- Modern Care Connect Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-modern">
             <div class="container-fluid">
-                <a class="navbar-brand-custom" href="index.php">
-                    <h1>แคร์คอนเนค</h1>
-                    <h3>care connect</h3>
-                </a>
+                <div class="brand-container">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <a class="navbar-brand-modern" href="index.php">
+                        <span class="brand-title">แคร์คอนเนค</span>
+                        <span class="brand-subtitle">CARE CONNECT</span>
+                    </a>
+                </div>
 
-                <button class="navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar" aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- เพิ่ม class "navbar-toggler" เพื่อให้ Bootstrap ทำงานได้ถูกต้อง -->
+                <button class="navbar-toggler navbar-toggler-modern" type="button" data-bs-toggle="collapse" data-bs-target="#modernNavbar" aria-controls="modernNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="topNavbar">
-                    <ul class="navbar-nav ms-auto nav-custom">
+                <div class="collapse navbar-collapse" id="modernNavbar">
+                    <ul class="navbar-nav ms-auto nav-modern">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">หน้าแรก</a>
+                            <a class="nav-link active" href="index.php">
+                                <i class="fa-solid fa-house"></i>
+                                หน้าแรก
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="profile.php">โปรไฟล์</a>
+                            <a class="nav-link" href="profile.php">
+                                <i class="fa-solid fa-user"></i>
+                                โปรไฟล์
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="services.php">บริการ</a>
+                            <a class="nav-link" href="services.php">
+                                <i class="fa-solid fa-hand-holding-medical"></i>
+                                บริการ
+                            </a>
                         </li>
-                        <li class="nav-item appointment-btn-custom">
-                            <a class="nav-link" href="contact.php">ติดต่อ</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="doctors.php">
+                                <i class="fa-solid fa-user-doctor"></i>
+                                แพทย์
+                            </a>
+                        </li>
+                        <li class="nav-item appointment-btn-modern">
+                            <a class="nav-link" href="appointment.php">
+                                <i class="fa-solid fa-calendar-check"></i>
+                                นัดหมาย
+                            </a>
                         </li>
                     </ul>
 
-                    <div class="user-menu">
-                        <a href="settings.php" title="การตั้งค่า">
-                            <i class="fa-solid fa-gear"></i>
-                        </a>
-                        <a href="logout.php" title="ออกจากระบบ">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                        </a>
+                    <div class="user-menu-modern">
+                        <div class="user-avatar" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>ส</span>
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.php"><i class="fa-solid fa-user"></i> โปรไฟล์ของฉัน</a></li>
+                            <li><a class="dropdown-item" href="appointments.php"><i class="fa-solid fa-calendar-days"></i> การนัดหมาย</a></li>
+                            <li><a class="dropdown-item" href="medical-history.php"><i class="fa-solid fa-file-medical"></i> ประวัติการรักษา</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="settings.php"><i class="fa-solid fa-gear"></i> การตั้งค่า</a></li>
+                            <li><a class="dropdown-item text-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </nav>
 
-    
-
-   
+        <!-- Content Area -->
+        
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ฟังก์ชันสำหรับเพิ่มเอฟเฟกต์เมื่อเมนูเบอร์เกอร์ถูกคลิก
-        document.querySelector('.navbar-toggler-custom').addEventListener('click', function() {
-            this.classList.toggle('active');
+        // ฟังก์ชันสำหรับจัดการการเปิดปิดเมนู
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggler = document.querySelector('.navbar-toggler-modern');
+            const navbarCollapse = document.getElementById('modernNavbar');
             
-            // เพิ่มอนิเมชันให้กับไอคอน
-            const iconBars = this.querySelectorAll('.icon-bar');
-            if (this.classList.contains('active')) {
-                iconBars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                iconBars[1].style.opacity = '0';
-                iconBars[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                iconBars[0].style.transform = 'none';
-                iconBars[1].style.opacity = '1';
-                iconBars[2].style.transform = 'none';
+            // ฟังก์ชันสำหรับอัพเดทสถานะของปุ่ม toggler
+            function updateTogglerState() {
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarToggler.classList.add('active');
+                } else {
+                    navbarToggler.classList.remove('active');
+                }
             }
+            
+            // เพิ่ม event listener สำหรับการแสดงและซ่อนเมนู
+            navbarCollapse.addEventListener('show.bs.collapse', function() {
+                navbarToggler.classList.add('active');
+            });
+            
+            navbarCollapse.addEventListener('hide.bs.collapse', function() {
+                navbarToggler.classList.remove('active');
+            });
+            
+            // ปิดเมนูเมื่อคลิกลิงก์ (สำหรับมือถือ)
+            document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 992) {
+                        // ถ้าเป็นหน้าจอเล็ก ให้ปิดเมนูโดยใช้ Bootstrap Collapse API
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                            toggle: false
+                        });
+                        bsCollapse.hide();
+                    }
+                    
+                    // อัพเดทสถานะ active สำหรับ nav-link เท่านั้น
+                    if (this.classList.contains('nav-link')) {
+                        document.querySelectorAll('.nav-link').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // ตรวจสอบสถานะเริ่มต้น
+            updateTogglerState();
         });
 
-        // ปิดเมนูเมื่อคลิกลิงก์ (สำหรับมือถือ)
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                const navbarToggler = document.querySelector('.navbar-toggler-custom');
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                
-                if (window.innerWidth < 992) {
-                    // ถ้าเป็นหน้าจอเล็ก ให้ปิดเมนู
-                    navbarCollapse.classList.remove('show');
-                    navbarToggler.classList.remove('active');
-                    
-                    // รีเซ็ตไอคอน
-                    const iconBars = navbarToggler.querySelectorAll('.icon-bar');
-                    iconBars[0].style.transform = 'none';
-                    iconBars[1].style.opacity = '1';
-                    iconBars[2].style.transform = 'none';
-                }
-            });
+        // เพิ่มเอฟเฟกต์เมื่อสกอร์ลง
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar-modern');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.12)';
+            } else {
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+            }
         });
     </script>
 </body>

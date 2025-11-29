@@ -22,12 +22,14 @@
             display: flex;
             flex-direction: column;
         }
+
+      
         /* Footer Styles */
         .footer-premium {
-            background: linear-gradient(135deg, #1a3a8f 0%, #2d5fc5 100%);
+            background: linear-gradient(135deg, #0D6EFD 0%, #51b9ffff 100%);
             color: #fff;
-            padding: 60px 0 20px;
-            margin-top: 60px;
+            padding: 30px 0 20px;
+            margin-top: 30px;
             position: relative;
             overflow: hidden;
         }
@@ -39,7 +41,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+            background: linear-gradient(90deg, #4bc6ffff, #f4a0ffff, #8688ffff, #c2e9fb);
         }
 
         .footer-content {
@@ -136,10 +138,7 @@
             transition: all 0.3s ease;
         }
 
-        .social-links a:hover {
-            background: #ff9a9e;
-            transform: translateY(-5px);
-        }
+        
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -153,66 +152,8 @@
             font-size: 0.9rem;
         }
 
-        .newsletter-form {
-            display: flex;
-            gap: 10px;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            font-family: 'Noto Sans Thai', sans-serif;
-        }
-
-        .newsletter-form input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .newsletter-form button {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            color: #1a3a8f;
-            border: none;
-            border-radius: 6px;
-            padding: 12px 20px;
-            font-family: 'Kanit', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
-        }
-
-        /* Responsive */
-        @media (max-width: 991px) {
-            .nav-simple {
-                text-align: center;
-                padding-top: 15px;
-            }
-            
-            .nav-simple li {
-                margin: 5px 0;
-            }
-            
-            .appointment-btn-simple {
-                margin: 10px 0 0 0;
-            }
-            
-            .user-menu {
-                margin: 15px 0 0 0;
-                justify-content: center;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
+      
+      
     </style>
 </head>
 <body>
@@ -232,19 +173,7 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-col">
-                    <h3>ลิงก์ด่วน</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> หน้าแรก</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> บริการของเรา</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> นัดหมายแพทย์</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> บทความสุขภาพ</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> ติดต่อเรา</a></li>
-                    </ul>
-                </div>
-                
-                
+            
                 <div class="footer-col">
                     <h3>ติดต่อเรา</h3>
                     <ul class="footer-contact">
