@@ -380,7 +380,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="knowledge_base.php">
                                 <i class="fa-solid fa-user-doctor"></i> คลังความรู้
                             </a>
                         </li>

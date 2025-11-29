@@ -6,11 +6,15 @@
     <title>ติดตามสุขภาพ - สำหรับผู้สูงอายุ</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/health_report.css">
+    
     <style>
 
     </style>
 </head>
 <body>
+
+<?php include 'navbar.php'   ?>
+
     <div class="container">
         <header>
             <h1>ติดตามสุขภาพรายวัน</h1>
@@ -407,5 +411,8 @@
         // อัพเดตสถานะเริ่มต้น
         updateStatus();
     </script>
+
+<?php include 'footer.php'   ?>
+
 </body>
 </html>

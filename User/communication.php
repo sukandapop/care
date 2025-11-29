@@ -10,6 +10,9 @@
     </style>
 </head>
 <body>
+
+<?php include 'navbar.php'   ?>
+
     <div class="container">
         <header class="header">
             <h1>แชทกลุ่มสำหรับผู้สูงอายุป่วยติดเตียง</h1>
@@ -380,5 +383,8 @@
             groupDetailSection.style.display = 'none';
         });
     </script>
+
+<?php include 'footer.php'   ?>
+
 </body>
 </html>

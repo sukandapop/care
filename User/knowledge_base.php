@@ -11,6 +11,9 @@
     </style>
 </head>
 <body>
+
+<?php include 'navbar.php'   ?>
+    
     <div class="container">
         <!-- ส่วนค้นหา -->
         <section class="search-section">
@@ -206,5 +209,8 @@
             });
         });
     </script>
+
+<?php include 'footer.php'   ?>
+
 </body>
 </html>
