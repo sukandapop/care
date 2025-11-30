@@ -17,10 +17,12 @@
         body {
             font-family: 'Noto Sans Thai', sans-serif;
             background: linear-gradient(135deg, #f9faffff 0%, #47a6ffff 100%);
-            min-height: 100vh;
             color: #333;
             display: flex;
             flex-direction: column;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
         }
 
       

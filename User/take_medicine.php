@@ -18,15 +18,17 @@
             font-family: 'Noto Sans Thai', sans-serif;
             background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
             color: #333;
-            min-height: 100vh;
-            padding: 15px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
         }
 
         .medication-container {
-            max-width: 900px;
+            width: 100%;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
+            margin-top: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }

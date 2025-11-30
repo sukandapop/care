@@ -15,6 +15,12 @@
 </head>
 <style>
 
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     
 :root {
     --primary: #4361ee;
@@ -85,7 +91,7 @@
     
   <?php include 'navbar.php'   ?>
 
-    <div class="container-fluid"    >
+    <div class="container-fluid">
         <section class="text-center my-1 ">
           <br>
            <div class="profile-image mx-auto mb-3 bg-light rounded-circle d-flex align-items-center justify-content-center shadow-sm">
@@ -140,8 +146,8 @@
                 </div>
             </div>
         </main>
-        <?php include 'footer.php'   ?>
     </div>
+        <?php include 'footer.php'   ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         
