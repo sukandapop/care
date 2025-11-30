@@ -326,6 +326,9 @@
     </style>
 </head>
 <body>
+
+<?php include 'navbar.php'; ?>
+
     <div class="container">
         <!-- แถบข้างแสดงรายชื่อผู้ติดต่อ -->
         <div class="sidebar">

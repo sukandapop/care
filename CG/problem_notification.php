@@ -197,6 +197,9 @@
     </style>
 </head>
 <body>
+
+<?php include 'navbar.php'; ?>
+
     <header>
         <div class="container">
             <h1>ระบบแจ้งปัญหาและเหตุฉุกเฉิน</h1>
