@@ -371,22 +371,27 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="take_medicine.php">
-                                <i class="fa-solid fa-pills"></i> รับประทานยา
+                                <i class="fa-solid fa-pills"></i> บันทึกข้อมูลผู้สูงอายุ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="take_medicine.php">
+                                <i class="fa-solid fa-pills"></i> บันทึกเยี่ยมบ้าน
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="appointment.php">
-                                <i class="fa-solid fa-hand-holding-medical"></i> นัดหมาย
+                                <i class="fa-solid fa-hand-holding-medical"></i> แจ้งปัญหา
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="knowledge_base.php">
-                                <i class="fa-solid fa-user-doctor"></i> คลังความรู้
+                                <i class="fa-solid fa-user-doctor"></i> แจ้งรับประทานยา
                             </a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="health_report.php">
-                                <i class="fa-solid fa-calendar-check"></i> รายงานสุขภาพ
+                                <i class="fa-solid fa-calendar-check"></i> บันทึกผลตรวจสุขภาพ
                             </a>
                         </li>
                     </ul>
