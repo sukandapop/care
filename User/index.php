@@ -13,11 +13,79 @@
        <link rel="stylesheet" href="../css/index.css">
 
 </head>
-<body class="bg-primary text-black" style="font-family: 'Sarabun', sans-serif;">
+<style>
+
+    
+:root {
+    --primary: #4361ee;
+    --secondary: #3f37c9;
+    --success: #4cc9f0;
+    --info: #36b9cc;
+    --warning: #f6c23e;
+    --danger: #e74a3b;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --purple: #7209b7;
+    --teal: #20c997;
+    --pink: #e83e8c;
+    --cyan: #0dcaf0;
+    --mango: #FFC107;
+    --mango-dark: #E6A000;
+}
+
+.body  {
+    background: linear-gradient(135deg, rgb(34, 171, 250) 0%, #ffffffff 100%);
+    font-family: 'Kanit', sans-serif;
+    /* ใช้ฟอนต์ Kanit สำหรับทั้งเว็บไซต์ */
+   
+}
+
+/* ลบขีดเส้นใต้และกำหนดรูปแบบลิงก์สำหรับเมนู */
+.menu-item {
+    text-decoration: none;
+    color: #000;
+    /* สีข้อความดำ */
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    /* ลบขอบ card */
+}
+
+/* Effect เมื่อวางเมาส์เหนือปุ่ม */
+.menu-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ปรับสีพื้นหลังหลัก */
+.bg-primary {
+    background-color: var(--info);
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* ควรเปลี่ยน path ให้เป็น relative path */
+    background-image: url('../images/Gemini_Generated_Image_50c2mb50c2mb50c2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    margin: 0 auto 3px auto;
+    background-color: lightblue;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+</style>
+<body  style="font-family: 'Sarabun', sans-serif;">
     
   <?php include 'navbar.php'   ?>
 
-    <div class="container-fluid"  min-height: 100vh; padding-bottom: 70px; >
+    <div class="container-fluid"    >
         <section class="text-center my-1 ">
           <br>
            <div class="profile-image mx-auto mb-3 bg-light rounded-circle d-flex align-items-center justify-content-center shadow-sm">
@@ -72,11 +140,12 @@
                 </div>
             </div>
         </main>
+        <?php include 'footer.php'   ?>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         
-    <?php include 'footer.php'   ?>
+    
 
 </body>
 </html>
