@@ -73,7 +73,7 @@
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
-            background-color: #f0f4f8; /* Light gray-blue background */
+            background-color: #f0f4f8;
             min-height: 100vh;
             display: flex;
             align-items: center;
