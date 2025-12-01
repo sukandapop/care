@@ -598,6 +598,13 @@
                     <h1 class="page-title">ระบบบันทึกการรับประทานยา</h1>
                     <p class="mb-0">วันที่ 16 กุมภาพันธ์ 2568</p>
                 </div>
+                <div class="user-info">
+                    <div class="user-avatar">ด</div>
+                    <div class="user-details text-center text-md-start">
+                        <h4>คุณดวงฤดี ชลปัญญา</h4>
+                        <p>ผู้ดูแลในครอบครัว</p>
+                    </div>
+                </div>
             </div>
         </div>
 

@@ -407,12 +407,9 @@
                     </div>
 
                     <div class="user-menu-modern dropdown d-none d-lg-block">
-                        
                         <div class="user-avatar" id="userDropdownDesktop" data-bs-toggle="dropdown" aria-expanded="false">
                             <span>ส</span>
-                            
                         </div>
-                        
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownDesktop">
                             <li><a class="dropdown-item" href="settings.php"><i class="fa-solid fa-gear"></i> การตั้งค่า</a></li>
                             <li><a class="dropdown-item text-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
