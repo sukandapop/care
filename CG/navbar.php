@@ -382,7 +382,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="problem_notification.php" href="report_problem.php">
+                        <a class="nav-link" href="report_problem.php">
                             <i class="fa-solid fa-exclamation-triangle"></i> แจ้งปัญหา
                         </a>
                     </li>
