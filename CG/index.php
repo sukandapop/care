@@ -190,7 +190,7 @@
                 </div>
   
                 <div class="col">
-                    <a href="appointment.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
+                    <a href="problem_notification.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
                         <i class="bi bi-calendar-check fs-2 mb-2 text-primary"></i> 
                         <div class="menu-label fw-normal">แจ้งปัญหา</div>
                     </a>
@@ -216,7 +216,7 @@
                 </div>
 
                 <div class="col">
-                    <a href="communication.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
+                    <a href="agency_chat_interface.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
                         <i class="bi bi-chat-text fs-2 mb-2 text-primary"></i>
                         <div class="menu-label fw-normal">พูดคุยให้คำปรึกษา</div>
                     </a>
