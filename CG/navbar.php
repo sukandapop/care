@@ -377,12 +377,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="record_visit.php">
+                        <a class="nav-link" href="Home_Visit_Record.php">
                             <i class="fa-solid fa-house-user"></i> บันทึกเยี่ยมบ้าน
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="report_problem.php">
+                        <a class="nav-link" href="problem_notification.php">
                             <i class="fa-solid fa-exclamation-triangle"></i> แจ้งปัญหา
                         </a>
                     </li>
