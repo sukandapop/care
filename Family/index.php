@@ -183,7 +183,8 @@
            <div class="profile-image mx-auto mb-3 bg-light rounded-circle d-flex align-items-center justify-content-center shadow-sm">
                 <!-- <img src="https://scontent.futh1-1.fna.fbcdn.net/v/t39.30808-6/528889843_4242583999353614_5256576025221137006_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=BBrBNVObQwcQ7kNvwHSIbE6&_nc_oc=AdnlQDVvLAeELU93pF45r85npR-Wx1z3cBnAco_BLwdeN3iCDQOCZnszS-eJcRWrYms&_nc_zt=23&_nc_ht=scontent.futh1-1.fna&_nc_gid=sci9qHtLSTt9stDtyh1zqA&oh=00_AfigGgE63i5Vv59WSn3z2HesR9BKKjeoc9g-SgTKPZqhRQ&oe=692E539F" alt="ผู้ป่วยคนแรก"> -->
           </div>
-            <h1 class="text-black fw-bold fs-3">สวัสดีคุณดวงฤดี ชลปัญญา</h1>
+            <h4 class="text-black ">ผู้ดูแลในครอบครัว</h4>
+            <h3 class="text-black fw-bold ">สวัสดีคุณดวงฤดี ชลปัญญา</h3>
         </section>
 
         <main class="container">

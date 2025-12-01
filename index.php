@@ -60,7 +60,7 @@
                    
                 </div>
                 <button onclick="login('ผู้ป่วย')" class="w-full py-3 text-lg font-bold text-white bg-blue-600 hover:bg-blue-700 transition duration-150">
-                    เข้าสู่ระบบ
+                    <a href="User/index.php"> เข้าสู่ระบบ</a>
                 </button>
             </div>
             
@@ -71,7 +71,7 @@
                 
                 </div>
                 <button onclick="login('ผู้ดูแล')" class="w-full py-3 text-lg font-bold text-gray-800 bg-yellow-400 hover:bg-yellow-500 transition duration-150">
-                    เข้าสู่ระบบ
+                    <a href="Family/index.php"> เข้าสู่ระบบ</a>
                 </button>
             </div>
             
@@ -82,7 +82,7 @@
                  
                 </div>
                 <button onclick="login('อสม.')" class="w-full py-3 text-lg font-bold text-white bg-pink-500 hover:bg-pink-600 transition duration-150">
-                    เข้าสู่ระบบ
+                    <a href="CG/index.php"> เข้าสู่ระบบ</a>
                 </button>
             </div>
             
@@ -93,7 +93,7 @@
                   
                 </div>
                 <button onclick="login('CM')" class="w-full py-3 text-lg font-bold text-white bg-green-500 hover:bg-green-600 transition duration-150">
-                    เข้าสู่ระบบ
+                   <a href="CM/index.php"> เข้าสู่ระบบ</a>
                 </button>
             </div>
 
@@ -104,7 +104,7 @@
                   
                 </div>
                 <button onclick="login('PCU/รพ.สต.')" class="w-full py-3 text-lg font-bold text-white bg-teal-500 hover:bg-teal-600 transition duration-150">
-                    เข้าสู่ระบบ
+                    <a href="User/index.php"> เข้าสู่ระบบ</a>
                 </button>
             </div>
 
@@ -146,14 +146,14 @@
             document.getElementById('messageBox').classList.remove('flex');
         }
         
-        // --- MOCK LOGIN FUNCTION ---
-        function login(role) {
-            showMessageBox(
-                'ดำเนินการต่อ',
-                `คุณเลือกเข้าสู่ระบบในฐานะ "${role}" ระบบจะนำไปยังหน้าจอการยืนยันตัวตนต่อไป`
-            );
-            // ในระบบจริง จะมีการเปลี่ยนหน้าไปที่ /login?role=role_name หรือแสดงฟอร์ม Login/OTP 
-        }
+        // // --- MOCK LOGIN FUNCTION ---
+        // function login(role) {
+        //     showMessageBox(
+        //         'ดำเนินการต่อ',
+        //         `คุณเลือกเข้าสู่ระบบในฐานะ "${role}" ระบบจะนำไปยังหน้าจอการยืนยันตัวตนต่อไป`
+        //     );
+        //     // ในระบบจริง จะมีการเปลี่ยนหน้าไปที่ /login?role=role_name หรือแสดงฟอร์ม Login/OTP 
+        // }
     </script>
 </body>
 </html>

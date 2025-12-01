@@ -57,95 +57,117 @@
             margin-bottom: 30px;
         }
 
-        .calendar-section {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 30px;
-        }
+     /* Calendar Section */
+.calendar-section {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    overflow-x: auto; /* เพิ่มสำหรับ horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* สำหรับ scroll ที่ลื่นในมือถือ */
+}
 
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    min-width: 350px; /* ป้องกัน header เล็กลงเกินไป */
+}
 
-        .month-year {
-            font-family: 'Kanit', sans-serif;
-            font-weight: 600;
-            font-size: 1.5rem;
-            color: #2d5fc5;
-        }
+.month-year {
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin: 0;
+}
 
-        .calendar-controls button {
-            background: #5d98ff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 15px;
-            margin-left: 10px;
-            transition: all 0.3s ease;
-        }
+.calendar-controls {
+    display: flex;
+    gap: 10px;
+}
 
-        .calendar-controls button:hover {
-            background: #2d5fc5;
-            transform: translateY(-2px);
-        }
+.calendar-controls button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--light);
+    border: none;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
 
-        .calendar-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+.calendar-controls button:hover {
+    background: var(--primary);
+    color: white;
+}
 
-        .calendar-table th {
-            background: #f1f6ff;
-            color: #2d5fc5;
-            font-family: 'Kanit', sans-serif;
-            font-weight: 500;
-            padding: 12px;
-            text-align: center;
-            border: none;
-        }
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 350px; /* ขั้นต่ำของตาราง */
+}
 
-        .calendar-table td {
-            height: 80px;
-            text-align: center;
-            vertical-align: top;
-            padding: 8px;
-            border: 1px solid #eaeaea;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-        }
+.calendar-table thead {
+    background: #f8f9fa;
+}
 
-        .calendar-table td:hover {
-            background: #f1f6ff;
-        }
+.calendar-table th {
+    padding: 12px 8px;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-bottom: 2px solid #e0e0e0;
+    min-width: 40px;
+}
 
-        .calendar-table td.active {
-            background: #e6f0ff;
-            font-weight: 600;
-        }
+.calendar-table td {
+    padding: 8px;
+    text-align: center;
+    vertical-align: top;
+    height: 60px;
+    border: 1px solid #f0f0f0;
+    position: relative;
+}
 
-        .day-number {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
+.day-number {
+    font-family: 'Kanit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
 
-        .appointment-indicator {
-            display: flex;
-            justify-content: center;
-            gap: 3px;
-            margin-top: 5px;
-        }
+/* สีสำหรับวันที่ไม่ใช่เดือนปัจจุบัน */
+.calendar-table td:first-child .day-number,
+.calendar-table td:last-child .day-number {
+    color: #adb5bd;
+}
 
-        .appointment-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
+.appointment-indicator {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    flex-wrap: wrap;
+}
+
+.appointment-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
 
         .appointment-dot.consultation {
             background: #ff9a9e;
