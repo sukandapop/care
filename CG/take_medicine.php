@@ -89,6 +89,7 @@
             color: #495057;
             cursor: pointer;
             transition: all 0.2s;
+            font-size: 0.9rem;
         }
 
         .time-badge.active {
@@ -153,6 +154,144 @@
             color: var(--primary);
             margin-right: 0.5rem;
         }
+
+        /* ปรับปรุงสำหรับมือถือ */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .d-flex.justify-content-between.align-items-center.mb-4 {
+                flex-direction: column;
+                align-items: flex-start !important;
+            }
+            
+            .d-flex.justify-content-between.align-items-center.mb-4 a {
+                margin-top: 1rem;
+                align-self: flex-start;
+            }
+            
+            /* ปรับฟอร์มให้เป็นคอลัมน์เดียว */
+            .row.mb-3 > .col-md-6 {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .row.mb-3 > .col-md-6:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* ปรับเวลาแจ้งเตือนให้เหมาะสม */
+            .d-flex.flex-wrap {
+                justify-content: center;
+            }
+            
+            .time-badge {
+                flex: 0 0 calc(33.333% - 0.5rem);
+                text-align: center;
+                padding: 0.5rem 0.5rem;
+                margin: 0.125rem;
+                font-size: 0.8rem;
+            }
+            
+            /* ปรับตารางให้เลื่อนได้แนวนอน */
+            .table-responsive {
+                border-radius: 8px;
+                overflow-x: auto;
+            }
+            
+            table.table {
+                min-width: 600px; /* ทำให้ตารางกว้างพอเพื่อให้ข้อมูลไม่ล้น */
+            }
+            
+            /* ปรับการ์ดในคอลัมน์ขวา */
+            .col-lg-4 .card {
+                margin-bottom: 1.5rem;
+            }
+            
+            /* ปุ่มในตารางให้เรียงเป็นแนวตั้ง */
+            .btn-group-vertical {
+                width: 100%;
+            }
+            
+            /* ปรับ padding ของการ์ด */
+            .card-body {
+                padding: 1rem;
+            }
+            
+            /* ปรับขนาดฟอนต์ */
+            h1.h2 {
+                font-size: 1.5rem;
+            }
+            
+            .text-muted {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* สำหรับหน้าจอขนาดเล็กมาก (iPhone SE เป็นต้น) */
+        @media (max-width: 576px) {
+            .time-badge {
+                flex: 0 0 calc(50% - 0.5rem);
+                font-size: 0.75rem;
+            }
+            
+            .btn-primary, .btn-outline-secondary {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .d-grid.gap-2.d-md-flex.justify-content-md-end {
+                flex-direction: column;
+            }
+            
+            .d-grid.gap-2.d-md-flex.justify-content-md-end button {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .d-grid.gap-2.d-md-flex.justify-content-md-end button:last-child {
+                margin-bottom: 0;
+            }
+            
+            .alert-notification {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .alert-notification .text-end {
+                text-align: center !important;
+                margin-top: 0.5rem;
+            }
+        }
+        
+        /* สำหรับแท็บเล็ตแนวนอน */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .col-lg-8, .col-lg-4 {
+                width: 100%;
+            }
+            
+            .col-lg-4 {
+                margin-top: 2rem;
+            }
+        }
+        
+        /* ปรับปรุงสำหรับการพิมพ์ */
+        @media print {
+            body {
+                background: white !important;
+            }
+            
+            .medicine-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            .btn, .time-badge, .form-control, .form-select {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -213,11 +352,11 @@
                             <div class="date-range">
                                 <h6 class="fw-bold mb-3">กำหนดช่วงเวลาการแจ้งเตือน</h6>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 mb-3">
                                         <label for="startDate" class="form-label">วันที่เริ่มต้น</label>
                                         <input type="date" class="form-control" id="startDate" required>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 mb-3">
                                         <label for="endDate" class="form-label">วันที่สิ้นสุด</label>
                                         <input type="date" class="form-control" id="endDate" required>
                                     </div>
@@ -251,7 +390,7 @@
                             </div>
 
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button type="reset" class="btn btn-outline-secondary me-md-2">ล้างข้อมูล</button>
+                                <button type="reset" class="btn btn-outline-secondary me-md-2 mb-2 mb-md-0">ล้างข้อมูล</button>
                                 <button type="submit" class="btn btn-primary">บันทึกการแจ้งเตือน</button>
                             </div>
                         </form>
@@ -361,8 +500,6 @@
             </div>
         </div>
     </div>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -549,12 +686,14 @@
                     <td>${alert.times.join(', ')}</td>
                     <td><span class="status-indicator ${statusClass}"></span>${statusText}</td>
                     <td>
-                        <button class="btn btn-sm btn-outline-primary" onclick="editAlert(${alert.id})">
-                            <i class="bi bi-pencil"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-danger" onclick="deleteAlert(${alert.id})">
-                            <i class="bi bi-trash"></i>
-                        </button>
+                        <div class="btn-group-vertical btn-group-sm" role="group">
+                            <button class="btn btn-outline-primary mb-1" onclick="editAlert(${alert.id})">
+                                <i class="bi bi-pencil"></i> แก้ไข
+                            </button>
+                            <button class="btn btn-outline-danger" onclick="deleteAlert(${alert.id})">
+                                <i class="bi bi-trash"></i> ลบ
+                            </button>
+                        </div>
                     </td>
                 `;
                 
@@ -573,17 +712,17 @@
                 if (alert.status === 'active' && today >= alert.startDate && today <= alert.endDate) {
                     alert.times.forEach(time => {
                         const alertDiv = document.createElement('div');
-                        alertDiv.className = 'alert alert-notification d-flex justify-content-between align-items-center';
+                        alertDiv.className = 'alert alert-notification d-flex flex-column flex-md-row justify-content-between align-items-center';
                         
                         alertDiv.innerHTML = `
-                            <div>
+                            <div class="text-center text-md-start mb-2 mb-md-0">
                                 <h6 class="mb-1">${alert.medicine} - ${alert.elderly}</h6>
                                 <p class="mb-0 small">${alert.quantity} ${alert.dosage ? `(${alert.dosage})` : ''}</p>
                                 <p class="mb-0 small text-muted">${alert.instructions || 'ไม่มีคำแนะนำพิเศษ'}</p>
                             </div>
-                            <div class="text-end">
-                                <span class="badge bg-primary">${time}</span>
-                                <div class="mt-1">
+                            <div class="text-center">
+                                <span class="badge bg-primary mb-2">${time}</span>
+                                <div>
                                     <button class="btn btn-sm btn-success" onclick="markAsTaken(${alert.id}, '${time}')">
                                         <i class="bi bi-check-lg"></i> รับประทานแล้ว
                                     </button>
