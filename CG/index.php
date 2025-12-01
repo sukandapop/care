@@ -177,7 +177,7 @@
                 
                 <!-- เมนูอื่นๆ -->
                 <div class="col">
-                    <a href="record_visit.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
+                    <a href="Home_Visit_Record.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
                         <i class="bi bi-house-door fs-2 mb-2 text-primary"></i> 
                         <div class="menu-label fw-normal">บันทึกเยี่ยมบ้าน</div>
                     </a>
