@@ -100,11 +100,11 @@
             <!-- 5. PCU / รพ.สต. (Clinic Staff) -->
             <div class="card bg-white rounded-xl shadow-xl overflow-hidden">
                 <div class="p-6">
-                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">รพ.สต.</h2>
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">อบต.</h2>
                   
                 </div>
                 <button onclick="login('PCU/รพ.สต.')" class="w-full py-3 text-lg font-bold text-white bg-teal-500 hover:bg-teal-600 transition duration-150">
-                    <a href="User/index.php"> เข้าสู่ระบบ</a>
+                    <a href=""> เข้าสู่ระบบ</a>
                 </button>
             </div>
 

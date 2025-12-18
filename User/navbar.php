@@ -160,7 +160,7 @@
         }
 
         .nav-modern .nav-link.active {
-            color: #4cc9f0;
+            /* color: #4cc9f0; */
             background: rgba(93, 152, 255, 0.1);
         }
 

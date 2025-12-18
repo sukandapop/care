@@ -896,28 +896,7 @@
                     <div class="footer-content">
                         <h5>คำเตือน</h5>
                         <p>กรุณารับประทานยาตรงเวลาและตามคำแนะนำของแพทย์</p>
-                    </div>
-                </div>
-                
-                <div class="footer-card">
-                    <div class="footer-icon success">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div class="footer-content">
-                        <h5>สถิติการรับประทานยา</h5>
-                        <p>อัตราการรับประทานยาตามเวลา 85% ในสัปดาห์นี้</p>
-                    </div>
-                </div>
-                
-                <div class="footer-card">
-                    <div class="footer-icon" style="background: #7209B7;">
-                        <i class="fas fa-file-medical"></i>
-                    </div>
-                    <div class="footer-content">
-                        <h5>รายงาน</h5>
-                        <p>สามารถดูรายงานการรับประทานยารายเดือนได้</p>
-                    </div>
-                </div>
+                    </div> 
             </div>
         </div>
     </div>
