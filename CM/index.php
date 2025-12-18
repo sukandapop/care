@@ -62,7 +62,7 @@
         width: 150px;
         height: 150px;
         border-radius: 50%;
-        background-image: url('../images/Gemini_Generated_Image_rbbsizrbbsizrbbs.png');
+        background-image: url('../images/HP.png');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
