@@ -321,6 +321,9 @@
     </style>
 </head>
 <body>
+
+<?php include 'navbar.php'; ?>
+
     <!-- Header Section -->
     <header>
         <div class="header-content">
