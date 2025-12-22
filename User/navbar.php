@@ -376,17 +376,22 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="appointment.php">
-                                <i class="fa-solid fa-hand-holding-medical"></i> นัดหมาย
+                                <i class="bi bi-calendar-check"></i> นัดหมาย
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="knowledge_base.php">
-                                <i class="fa-solid fa-user-doctor"></i> คลังความรู้
+                                <i class=" bi bi-book"></i> คลังความรู้
                             </a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="health_report.php">
-                                <i class="fa-solid fa-calendar-check"></i> รายงานสุขภาพ
+                                <i class="bi bi-activity"></i> รายงานสุขภาพ
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="communication.php">
+                                <i class="bi bi-chat-text"></i> พูดคุยให้คำปรึกษา
                             </a>
                         </li>
                     </ul>
