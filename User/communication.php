@@ -3,386 +3,898 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบแชทกลุ่มสำหรับผู้สูงอายุ</title>
-    <link rel="stylesheet" href="../css/communication.css">
+    <title>การสนทนา - ผู้สูงอายุป่วยติดเตียง</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sukhumvit+Set:wght@300;400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* Reset และฟอนต์พื้นฐาน */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sukhumvit Set', 'Kanit', Arial, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #4a90e2;
+            --primary-light: #e6f0ff;
+            --secondary-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-color: #f9f9f9;
+            --dark-color: #333333;
+            --gray-light: #e9ecef;
+            --gray-medium: #adb5bd;
+            --gray-dark: #666666;
+            --border-color: #dee2e6;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --card-shadow-hover: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
 
+        body {
+            font-family: 'Sukhumvit Set', 'Kanit', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 380px;
+            background-color: white;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header Styles */
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: white;
+            z-index: 10;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 22px;
+            margin-right: 15px;
+        }
+
+        .user-details h2 {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 4px;
+            color: var(--dark-color);
+        }
+
+        .user-details .role {
+            color: var(--gray-dark);
+            font-size: 14px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Search Bar Styles */
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-family: 'Sukhumvit Set', 'Kanit', Arial, sans-serif;
+            font-size: 14px;
+            background-color: var(--light-color);
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-medium);
+        }
+
+        /* Chat List Styles */
+        .chat-list-container {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .chat-list-header {
+            padding: 15px 20px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-list-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--gray-dark);
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: var(--gray-dark);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .chat-list {
+            list-style: none;
+        }
+
+        .chat-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            position: relative;
+        }
+
+        .chat-item:hover {
+            background-color: var(--light-color);
+        }
+
+        .chat-item.active {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .chat-item.unread {
+            background-color: rgba(74, 144, 226, 0.05);
+        }
+
+        .chat-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .avatar-placeholder {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .family-avatar-bg {
+            background-color: var(--secondary-color);
+        }
+
+        .volunteer-avatar-bg {
+            background-color: #e67e22;
+        }
+
+        .cm-avatar-bg {
+            background-color: var(--primary-color);
+        }
+
+        .agency-avatar-bg {
+            background-color: #9b59b6;
+        }
+
+        .chat-info {
+            flex-grow: 1;
+            min-width: 0; /* สำหรับการตัดข้อความยาวเกิน */
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .chat-name {
+            font-weight: 600;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-time {
+            font-size: 12px;
+            color: var(--gray-dark);
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .chat-preview {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .last-message {
+            font-size: 14px;
+            color: var(--gray-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+        }
+
+        .last-message.unread {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+
+        .unread-badge {
+            background-color: var(--danger-color);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .chat-status {
+            position: absolute;
+            bottom: 20px;
+            left: 65px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .status-online {
+            background-color: var(--secondary-color);
+        }
+
+        .status-offline {
+            background-color: var(--gray-medium);
+        }
+
+        .status-busy {
+            background-color: var(--danger-color);
+        }
+
+        .status-away {
+            background-color: var(--warning-color);
+        }
+
+        /* Main Chat Area Styles */
+        .main-chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f2f5;
+        }
+
+        .empty-chat-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--gray-dark);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .empty-chat-icon {
+            font-size: 80px;
+            color: var(--gray-light);
+            margin-bottom: 20px;
+        }
+
+        .empty-chat-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--gray-dark);
+        }
+
+        .empty-chat-message {
+            max-width: 400px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Quick Actions Section */
+        .quick-actions {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-color);
+            background-color: white;
+        }
+
+        .quick-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .quick-button {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .quick-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Emergency Button */
+        .emergency-button {
+            width: 100%;
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .emergency-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+           
+            .sidebar {
+                width: 100%;
+                height: 100%;
+            }
+           
+            .main-chat-area {
+                display: none;
+            }
+           
+            .chat-list-container {
+                padding-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar-header {
+                padding: 15px;
+            }
+           
+            .chat-item {
+                padding: 12px 15px;
+            }
+           
+            .chat-avatar, .avatar-placeholder {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+           
+            .chat-status {
+                left: 60px;
+                bottom: 18px;
+            }
+
+            .quick-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for new messages */
+        @keyframes highlightNew {
+            0% { background-color: rgba(74, 144, 226, 0.1); }
+            100% { background-color: transparent; }
+        }
+
+        .new-message {
+            animation: highlightNew 2s ease-out;
+        }
     </style>
 </head>
 <body>
-
-<?php include 'navbar.php'   ?>
-
-    <div class="container">
-        <header class="header">
-            <h1>แชทกลุ่มสำหรับผู้สูงอายุป่วยติดเตียง</h1>
-            <p>ช่องทางการสื่อสารระหว่างผู้สูงอายุ ครอบครัว และอาสาสมัครสาธารณสุข</p>
-        </header>
-        
-        <div class="main-content">
-            <!-- แถบด้านข้างสำหรับข้อมูลกลุ่ม -->
-            <div class="group-sidebar">
-                <h2>ข้อมูลกลุ่ม</h2>
-                <div class="group-info">
-                    <div class="group-name">ครอบครัวและอสม.</div>
-                    <div class="group-description">กลุ่มสำหรับการสื่อสารระหว่างผู้สูงอายุ ครอบครัว และอาสาสมัครสาธารณสุขประจำหมู่บ้าน</div>
+    <div class="app-container">
+        <!-- Sidebar with Chat List -->
+        <div class="sidebar">
+            <!-- Header -->
+            <div class="sidebar-header">
+                <div class="user-info">
+                    <div class="user-avatar">ผส</div>
+                    <div class="user-details">
+                        <h2>ผู้สูงอายุป่วยติดเตียง</h2>
+                        <span class="role">ผู้ใช้งานระบบสื่อสาร</span>
+                    </div>
                 </div>
-                
-                <h2>สมาชิกในกลุ่ม</h2>
-                <ul class="members-list">
-                    <li class="member-item">
-                        <div class="member-avatar user">ผ</div>
-                        <div class="member-info">
-                            <h3>ผู้สูงอายุ</h3>
-                            <p>คุณปู่/คุณย่า</p>
+               
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="ค้นหาการสนทนา..." id="searchInput">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+           
+            <!-- Chat List -->
+            <div class="chat-list-container">
+                <div class="chat-list-header">
+                    <h3 class="chat-list-title">การสนทนาทั้งหมด</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">ทั้งหมด</button>
+                        <button class="filter-btn" data-filter="unread">ยังไม่อ่าน</button>
+                        <button class="filter-btn" data-filter="family">ครอบครัว</button>
+                    </div>
+                </div>
+               
+                <ul class="chat-list" id="chatList">
+                    <!-- ลูกสาว -->
+                    <li class="chat-item active unread" data-chat-id="1" data-category="family">
+                        <div class="avatar-placeholder family-avatar-bg">สม</div>
+                        <div class="chat-status status-online"></div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <h3 class="chat-name">สมหญิง (ลูกสาว)</h3>
+                                <span class="chat-time">10:23</span>
+                            </div>
+                            <div class="chat-preview">
+                                <p class="last-message unread">พ่อสบายดีไหมคะ วันนี้รู้สึกอย่างไรบ้าง</p>
+                                <div class="unread-badge">3</div>
+                            </div>
                         </div>
-                        <div class="member-status status-online"></div>
                     </li>
-                    <li class="member-item">
-                        <div class="member-avatar family">ล</div>
-                        <div class="member-info">
-                            <h3>ลูกสาว (สมหญิง)</h3>
-                            <p>ครอบครัว</p>
+                   
+                    <!-- ลูกชาย -->
+                    <li class="chat-item" data-chat-id="2" data-category="family">
+                        <div class="avatar-placeholder family-avatar-bg">สมช</div>
+                        <div class="chat-status status-away"></div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <h3 class="chat-name">สมชาย (ลูกชาย)</h3>
+                                <span class="chat-time">09:15</span>
+                            </div>
+                            <div class="chat-preview">
+                                <p class="last-message">เย็นนี้จะเอาข้าวมาฝากครับ</p>
+                            </div>
                         </div>
-                        <div class="member-status status-away"></div>
                     </li>
-                    <li class="member-item">
-                        <div class="member-avatar volunteer">อ</div>
-                        <div class="member-info">
-                            <h3>อสม. สมหมาย</h3>
-                            <p>อาสาสมัครสาธารณสุข</p>
+                   
+                    <!-- อาสาสมัคร -->
+                    <li class="chat-item" data-chat-id="3" data-category="volunteer">
+                        <div class="avatar-placeholder volunteer-avatar-bg">อ</div>
+                        <div class="chat-status status-online"></div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <h3 class="chat-name">อสม. สมหมาย</h3>
+                                <span class="chat-time">เมื่อวาน</span>
+                            </div>
+                            <div class="chat-preview">
+                                <p class="last-message">พรุ่งนี้จะแวะไปวัดความดันให้นะครับ</p>
+                                <div class="unread-badge">1</div>
+                            </div>
                         </div>
-                        <div class="member-status status-online"></div>
+                    </li>
+                   
+                    <!-- Case Manager -->
+                    <li class="chat-item" data-chat-id="4" data-category="cm">
+                        <div class="avatar-placeholder cm-avatar-bg">พญ</div>
+                        <div class="chat-status status-busy"></div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <h3 class="chat-name">พญ. กรวรรณ สุขใจ</h3>
+                                <span class="chat-time">เมื่อวาน</span>
+                            </div>
+                            <div class="chat-preview">
+                                <p class="last-message">ส่งรายงานสุขภาพประจำสัปดาห์แล้ว</p>
+                            </div>
+                        </div>
+                    </li>
+                   
+                    <!-- หน่วยงานสุขภาพ -->
+                    <li class="chat-item" data-chat-id="5" data-category="agency">
+                        <div class="avatar-placeholder agency-avatar-bg">สธ</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <h3 class="chat-name">สำนักงานหลักประกันสุขภาพ</h3>
+                                <span class="chat-time">25 มี.ค.</span>
+                            </div>
+                            <div class="chat-preview">
+                                <p class="last-message">ขอข้อมูลเพิ่มเติมสำหรับการต่ออายุบัตร</p>
+                            </div>
+                        </div>
+                    </li>
+                   
+                    <!-- อาสาสมัครคนที่ 2 -->
+                    <li class="chat-item unread" data-chat-id="6" data-category="volunteer">
+                        <div class="avatar-placeholder volunteer-avatar-bg">สมร</div>
+                        <div class="chat-status status-offline"></div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <h3 class="chat-name">อสม. สมร</h3>
+                                <span class="chat-time">24 มี.ค.</span>
+                            </div>
+                            <div class="chat-preview">
+                                <p class="last-message unread">พรุ่งนี้จะเอายามาส่งให้นะคะ</p>
+                                <div class="unread-badge">1</div>
+                            </div>
+                        </div>
+                    </li>
+                   
+                    <!-- โรงพยาบาล -->
+                    <li class="chat-item" data-chat-id="7" data-category="agency">
+                        <div class="avatar-placeholder agency-avatar-bg">รพ</div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <h3 class="chat-name">โรงพยาบาลใกล้บ้าน</h3>
+                                <span class="chat-time">23 มี.ค.</span>
+                            </div>
+                            <div class="chat-preview">
+                                <p class="last-message">นัดตรวจสุขภาพประจำเดือน เดือนหน้า</p>
+                            </div>
+                        </div>
+                    </li>
+                   
+                    <!-- กลุ่มครอบครัว -->
+                    <li class="chat-item" data-chat-id="8" data-category="family">
+                        <div class="avatar-placeholder family-avatar-bg">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="chat-info">
+                            <div class="chat-header">
+                                <h3 class="chat-name">กลุ่มครอบครัว</h3>
+                                <span class="chat-time">22 มี.ค.</span>
+                            </div>
+                            <div class="chat-preview">
+                                <p class="last-message">สมหญิง: แม่บอกว่าวันนี้ทานข้าวได้ดี</p>
+                            </div>
+                        </div>
                     </li>
                 </ul>
-                
-                <h2 style="margin-top: 30px;">ปุ่มด่วน</h2>
-                <div class="quick-buttons">
-                    <button class="quick-button">ต้องการน้ำดื่ม</button>
-                    <button class="quick-button">ต้องการยา</button>
-                    <button class="quick-button">ปวดเมื่อย</button>
-                    <button class="quick-button">ต้องการความช่วยเหลือ</button>
-                </div>
             </div>
-            
-            <!-- พื้นที่แชทหลัก -->
-            <div class="chat-area">
-                <div class="chat-header">
-                    <div class="chat-header-info">
-                        <h2>ครอบครัวและอสม.</h2>
-                        <p>กลุ่มแชทสำหรับการสื่อสารระหว่างผู้สูงอายุ ครอบครัว และอสม.</p>
-                    </div>
-                    <div class="group-actions">
-                        <button class="group-action-btn" id="groupInfoBtn">ข้อมูลกลุ่ม</button>
-                        <button class="group-action-btn">ตั้งค่า</button>
-                    </div>
-                </div>
-                
-                <div class="chat-messages">
-                    <div class="message family">
-                        <div class="message-content">
-                            <div class="message-header">
-                                <span class="message-sender">ลูกสาว (สมหญิง)</span>
-                                <span class="message-time">10:05 น.</span>
-                            </div>
-                            <div class="message-bubble">
-                                สวัสดีครับพ่อ วันนี้รู้สึกอย่างไรบ้างครับ?
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="message user">
-                        <div class="message-content">
-                            <div class="message-header">
-                                <span class="message-sender">คุณ</span>
-                                <span class="message-time">10:07 น.</span>
-                            </div>
-                            <div class="message-bubble">
-                                วันนี้รู้สึกปวดหลังนิดหน่อย ลูกชาย
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="message volunteer">
-                        <div class="message-content">
-                            <div class="message-header">
-                                <span class="message-sender">อสม. สมหมาย</span>
-                                <span class="message-time">10:08 น.</span>
-                            </div>
-                            <div class="message-bubble">
-                                สวัสดีครับคุณปู่ เดี๋ยวผมจะแวะไปเยี่ยมช่วงบ่ายนะครับ
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="message user">
-                        <div class="message-content">
-                            <div class="message-header">
-                                <span class="message-sender">คุณ</span>
-                                <span class="message-time">10:12 น.</span>
-                            </div>
-                            <div class="message-bubble">
-                                ขอบคุณนะลูก กับอสม.สมหมายด้วย
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="message-input">
-                    <textarea placeholder="พิมพ์ข้อความ..." id="messageText"></textarea>
-                    <button class="send-button" id="sendButton">
-                        <i>ส่ง</i>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <div class="quick-buttons">
+                    <button class="quick-button" onclick="sendQuickMessage('ต้องการน้ำดื่ม')">
+                        <i class="fas fa-glass-water"></i>
+                        <span>ต้องการน้ำดื่ม</span>
+                    </button>
+                    <button class="quick-button" onclick="sendQuickMessage('ต้องการยา')">
+                        <i class="fas fa-pills"></i>
+                        <span>ต้องการยา</span>
+                    </button>
+                    <button class="quick-button" onclick="sendQuickMessage('ปวดเมื่อย')">
+                        <i class="fas fa-bed"></i>
+                        <span>ปวดเมื่อย</span>
+                    </button>
+                    <button class="quick-button" onclick="sendQuickMessage('ต้องการความช่วยเหลือ')">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>ต้องการช่วยเหลือ</span>
                     </button>
                 </div>
+                
+                <button class="emergency-button" onclick="handleEmergency()">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    แจ้งเหตุฉุกเฉิน
+                </button>
             </div>
         </div>
-        
-        <!-- ส่วนข้อมูลกลุ่มที่ด้านล่าง -->
-        <div class="group-detail-section" id="groupDetailSection">
-            <div class="group-detail-header">
-                <h2>ข้อมูลกลุ่ม</h2>
-                <button class="close-detail-btn" id="closeDetailBtn">ปิด</button>
-            </div>
-            <div class="group-detail-content">
-                <div class="group-detail-info">
-                    <h3>รายละเอียดกลุ่ม</h3>
-                    <p><strong>ชื่อกลุ่ม:</strong> ครอบครัวและอสม.</p>
-                    <p><strong>สร้างเมื่อ:</strong> 15 มกราคม 2566</p>
-                    <p><strong>วัตถุประสงค์:</strong> กลุ่มสำหรับการสื่อสารระหว่างผู้สูงอายุป่วยติดเตียง ครอบครัว และอาสาสมัครสาธารณสุขประจำหมู่บ้าน เพื่อการดูแลสุขภาพและความเป็นอยู่ที่ดีของผู้สูงอายุ</p>
-                    <p><strong>กฎการใช้งาน:</strong> 
-                        <ul style="margin-left: 20px; color: #666;">
-                            <li>ใช้ภาษาที่สุภาพและเหมาะสม</li>
-                            <li>ไม่ส่งข้อมูลส่วนตัวที่สำคัญ</li>
-                            <li>แจ้งอาการหรือความต้องการให้ชัดเจน</li>
-                            <li>ใช้ปุ่มฉุกเฉินเมื่อต้องการความช่วยเหลือเร่งด่วน</li>
-                        </ul>
-                    </p>
+       
+        <!-- Main Chat Area (Empty State) -->
+        <div class="main-chat-area">
+            <div class="empty-chat-state">
+                <div class="empty-chat-icon">
+                    <i class="fas fa-comment-dots"></i>
                 </div>
-                <div class="group-detail-members">
-                    <h3>สมาชิกทั้งหมด</h3>
-                    <ul class="detail-members-list">
-                        <li class="detail-member-item">
-                            <div class="member-avatar user">ผ</div>
-                            <div class="member-info">
-                                <h3>ผู้สูงอายุ</h3>
-                                <p>คุณปู่/คุณย่า (สมาชิกหลัก)</p>
-                            </div>
-                            <div class="member-status status-online"></div>
-                        </li>
-                        <li class="detail-member-item">
-                            <div class="member-avatar family">ล</div>
-                            <div class="member-info">
-                                <h3>ลูกสาว (สมหญิง)</h3>
-                                <p>ครอบครัว</p>
-                            </div>
-                            <div class="member-status status-away"></div>
-                        </li>
-                        <li class="detail-member-item">
-                            <div class="member-avatar volunteer">อ</div>
-                            <div class="member-info">
-                                <h3>อสม. สมหมาย</h3>
-                                <p>อาสาสมัครผู้ดูแลผู้สูงอายุ</p>
-                            </div>
-                            <div class="member-status status-online"></div>
-                        </li>
-                        <li class="detail-member-item">
-                            <div class="member-avatar volunteer">อ</div>
-                            <div class="member-info">
-                                <h3>CM</h3>
-                                <p>ผู้จัดการดูแลผู้สูงอายุ</p>
-                            </div>
-                            <div class="member-status status-offline"></div>
-                        </li>
-                    </ul>
+                <h2 class="empty-chat-title">เลือกการสนทนาเพื่อเริ่มแชท</h2>
+                <p class="empty-chat-message">เลือกการสนทนาจากรายการด้านซ้ายเพื่อดูข้อความและส่งข้อความใหม่ คุณยังสามารถค้นหาการสนทนาหรือกรองตามประเภทได้</p>
+                <div style="margin-top: 20px; color: var(--primary-color);">
+                    <i class="fas fa-arrow-left" style="margin-right: 10px;"></i>
+                    <span>เลือกการสนทนาจากรายการ</span>
                 </div>
             </div>
-        </div>
-        
-        <!-- ส่วนปุ่มฉุกเฉิน -->
-        <div class="emergency-section">
-            <button class="emergency-button" id="emergencyButton">
-                <span>แจ้งเหตุฉุกเฉิน</span>
-            </button>
-            <p style="margin-top: 10px; color: #666;">กดปุ่มนี้เมื่อต้องการความช่วยเหลือเร่งด่วน</p>
         </div>
     </div>
 
     <script>
-        // ฟังก์ชันสำหรับการส่งข้อความ
-        document.getElementById('sendButton').addEventListener('click', function() {
-            const messageText = document.getElementById('messageText');
-            const text = messageText.value.trim();
-            
-            if (text) {
-                // สร้างข้อความใหม่จากผู้ใช้
-                const messagesContainer = document.querySelector('.chat-messages');
-                const newMessage = document.createElement('div');
-                newMessage.className = 'message user';
-                
-                const now = new Date();
-                const timeString = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')} น.`;
-                
-                newMessage.innerHTML = `
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="message-sender">คุณ</span>
-                            <span class="message-time">${timeString}</span>
-                        </div>
-                        <div class="message-bubble">
-                            ${text}
-                        </div>
-                    </div>
-                `;
-                
-                messagesContainer.appendChild(newMessage);
-                messageText.value = '';
-                
-                // เลื่อนไปที่ข้อความล่าสุด
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                
-                // จำลองการตอบกลับจากสมาชิกในกลุ่ม (สำหรับการสาธิต)
-                setTimeout(function() {
-                    const members = [
-                        { type: 'family', name: 'ลูกชาย (สมชาย)', avatar: 'ล' },
-                        { type: 'family', name: 'ลูกสาว (สมหญิง)', avatar: 'ล' },
-                        { type: 'volunteer', name: 'อสม. สมหมาย', avatar: 'อ' }
-                    ];
-                    
-                    const randomMember = members[Math.floor(Math.random() * members.length)];
-                    
-                    const replies = {
-                        family: [
-                            "ได้รับข้อความแล้วครับ/ค่ะ",
-                            "กำลังดำเนินการให้ครับ/ค่ะ",
-                            "ขอบคุณสำหรับข้อมูลครับ/ค่ะ",
-                            "จะแวะไปเยี่ยมเร็วๆ นี้ครับ/ค่ะ",
-                            "ดูแลสุขภาพด้วยนะครับ/ค่ะ"
-                        ],
-                        volunteer: [
-                            "ได้รับข้อความแล้วครับ",
-                            "จะแวะไปเยี่ยมให้เร็วที่สุดครับ",
-                            "ขอบคุณสำหรับข้อมูลครับ",
-                            "ดูแลตัวเองดีๆ นะครับ",
-                            "มีอะไรให้ช่วยเหลือไหมครับ"
-                        ]
-                    };
-                    
-                    const randomReply = replies[randomMember.type][Math.floor(Math.random() * replies[randomMember.type].length)];
-                    
-                    const replyMessage = document.createElement('div');
-                    replyMessage.className = `message ${randomMember.type}`;
-                    
-                    replyMessage.innerHTML = `
-                        <div class="message-content">
-                            <div class="message-header">
-                                <span class="message-sender">${randomMember.name}</span>
-                                <span class="message-time">${timeString}</span>
-                            </div>
-                            <div class="message-bubble">
-                                ${randomReply}
-                            </div>
-                        </div>
-                    `;
-                    
-                    messagesContainer.appendChild(replyMessage);
-                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                }, 1000 + Math.random() * 2000); // สุ่มเวลาตอบกลับระหว่าง 1-3 วินาที
-            }
-        });
-        
-        // อนุญาตให้ส่งข้อความด้วยการกด Enter
-        document.getElementById('messageText').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                document.getElementById('sendButton').click();
-            }
-        });
-        
-        // การจัดการปุ่มฉุกเฉิน
-        document.getElementById('emergencyButton').addEventListener('click', function() {
-            if (confirm('ต้องการแจ้งเหตุฉุกเฉินหรือไม่? ระบบจะส่งการแจ้งเตือนไปยังทุกคนในกลุ่ม')) {
-                alert('ระบบได้ส่งการแจ้งเตือนเหตุฉุกเฉินแล้ว');
-                
-                // เพิ่มข้อความแจ้งเตือนในแชท
-                const messagesContainer = document.querySelector('.chat-messages');
-                const emergencyMessage = document.createElement('div');
-                emergencyMessage.className = 'message user';
-                
-                const now = new Date();
-                const timeString = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')} น.`;
-                
-                emergencyMessage.innerHTML = `
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="message-sender">ระบบ</span>
-                            <span class="message-time">${timeString}</span>
-                        </div>
-                        <div class="message-bubble" style="background-color: #ffcccc; color: #cc0000; font-weight: bold;">
-                            แจ้งเหตุฉุกเฉิน! ผู้ใช้ได้กดปุ่มแจ้งเหตุฉุกเฉิน กรุณาติดต่อกลับโดยเร็ว
-                        </div>
-                    </div>
-                `;
-                
-                messagesContainer.appendChild(emergencyMessage);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                
-                // จำลองการตอบกลับฉุกเฉินจากสมาชิก
-                setTimeout(function() {
-                    const emergencyReplies = [
-                        { type: 'family', name: 'ลูกชาย (สมชาย)', message: 'กำลังโทรหาครับ!' },
-                        { type: 'volunteer', name: 'อสม. สมหมาย', message: 'กำลังเดินทางไปที่นั่นครับ!' },
-                        { type: 'family', name: 'ลูกสาว (สมหญิง)', message: 'กำลังโทรหาค่ะ!' }
-                    ];
-                    
-                    emergencyReplies.forEach((reply, index) => {
-                        setTimeout(() => {
-                            const replyMessage = document.createElement('div');
-                            replyMessage.className = `message ${reply.type}`;
-                            
-                            replyMessage.innerHTML = `
-                                <div class="message-content">
-                                    <div class="message-header">
-                                        <span class="message-sender">${reply.name}</span>
-                                        <span class="message-time">${timeString}</span>
-                                    </div>
-                                    <div class="message-bubble" style="background-color: #fffacd;">
-                                        ${reply.message}
-                                    </div>
-                                </div>
-                            `;
-                            
-                            messagesContainer.appendChild(replyMessage);
-                            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                        }, 1000 * (index + 1));
-                    });
-                }, 1000);
-            }
-        });
-        
-        // การจัดการปุ่มด่วน
-        document.querySelectorAll('.quick-button').forEach(button => {
+        // DOM Elements
+        const chatList = document.getElementById('chatList');
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const chatItems = document.querySelectorAll('.chat-item');
+       
+        // Filter chats by category
+        filterButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const quickMessage = this.textContent;
-                document.getElementById('messageText').value = quickMessage;
-                document.getElementById('sendButton').click();
+                // Remove active class from all filter buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+               
+                // Add active class to clicked button
+                this.classList.add('active');
+               
+                const filter = this.getAttribute('data-filter');
+                filterChats(filter);
             });
         });
-        
-        // การจัดการปุ่มข้อมูลกลุ่ม
-        document.getElementById('groupInfoBtn').addEventListener('click', function() {
-            const groupDetailSection = document.getElementById('groupDetailSection');
-            groupDetailSection.style.display = 'block';
-            
-            // เลื่อนหน้าจอไปยังส่วนข้อมูลกลุ่ม
-            groupDetailSection.scrollIntoView({ behavior: 'smooth' });
+       
+        // Filter chat function
+        function filterChats(filter) {
+            chatItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+               
+                if (filter === 'all') {
+                    item.style.display = 'flex';
+                } else if (filter === 'unread') {
+                    if (item.classList.contains('unread')) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                } else if (filter === 'family') {
+                    if (category === 'family') {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                } else {
+                    // For other specific categories
+                    if (category === filter) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+       
+        // Search function
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+           
+            chatItems.forEach(item => {
+                const chatName = item.querySelector('.chat-name').textContent.toLowerCase();
+                const lastMessage = item.querySelector('.last-message').textContent.toLowerCase();
+               
+                if (chatName.includes(searchTerm) || lastMessage.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         });
-        
-        // การจัดการปุ่มปิดข้อมูลกลุ่ม
-        document.getElementById('closeDetailBtn').addEventListener('click', function() {
-            const groupDetailSection = document.getElementById('groupDetailSection');
-            groupDetailSection.style.display = 'none';
+       
+        // Select chat item
+        chatItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                chatItems.forEach(chat => chat.classList.remove('active'));
+               
+                // Add active class to clicked item
+                this.classList.add('active');
+               
+                // Mark as read (remove unread badge)
+                if (this.classList.contains('unread')) {
+                    this.classList.remove('unread');
+                    const lastMessage = this.querySelector('.last-message');
+                    lastMessage.classList.remove('unread');
+                   
+                    // Remove unread badge
+                    const unreadBadge = this.querySelector('.unread-badge');
+                    if (unreadBadge) {
+                        unreadBadge.remove();
+                    }
+                   
+                    // Add animation for visual feedback
+                    this.classList.add('new-message');
+                    setTimeout(() => {
+                        this.classList.remove('new-message');
+                    }, 2000);
+                }
+               
+                // In a real app, this would load the chat messages
+                const chatId = this.getAttribute('data-chat-id');
+                const chatName = this.querySelector('.chat-name').textContent;
+                console.log(`กำลังโหลดการสนทนาที่ ${chatId} กับ ${chatName}`);
+               
+                // For mobile, we would navigate to chat screen
+                if (window.innerWidth <= 768) {
+                    alert(`บนแอปจริงจะเปิดหน้าการสนทนากับ: ${chatName}`);
+                }
+            });
         });
-    </script>
 
+        // Function to send quick messages
+        function sendQuickMessage(message) {
+            // Find active contact
+            const activeContact = document.querySelector('.chat-item.active');
+            
+            if (activeContact) {
+                const contactName = activeContact.querySelector('.chat-name').textContent;
+                alert(`ส่งข้อความด่วน "${message}" ไปยัง: ${contactName}`);
+                
+                // In a real app, this would send the message to the selected contact
+                // and navigate to the chat page with the message pre-filled
+                
+                // Example redirect with pre-filled message
+                // window.location.href = `/chat.html?contact=${contactId}&message=${encodeURIComponent(message)}`;
+            } else {
+                alert('กรุณาเลือกผู้ติดต่อก่อนส่งข้อความด่วน');
+            }
+        }
+
+        // Function to handle emergency button
+        function handleEmergency() {
+            if (confirm('ต้องการแจ้งเหตุฉุกเฉินหรือไม่? ระบบจะส่งการแจ้งเตือนไปยังทุกคนในรายการติดต่อ')) {
+                alert('ระบบได้ส่งการแจ้งเตือนเหตุฉุกเฉินแล้ว!\n\nทีมดูแลจะติดต่อกลับภายใน 5 นาที');
+                
+                // Log emergency event for demonstration
+                console.log('Emergency alert sent at:', new Date().toLocaleTimeString());
+                
+                // Show emergency notification in chat list
+                const emergencyNotification = document.createElement('li');
+                emergencyNotification.className = 'chat-item';
+                emergencyNotification.innerHTML = `
+                    <div class="avatar-placeholder" style="background-color: #e74c3c;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="chat-info">
+                        <div class="chat-header">
+                            <h3 class="chat-name">แจ้งเหตุฉุกเฉิน</h3>
+                            <span class="chat-time">${new Date().getHours().toString().padStart(2, '0')}:${new Date().getMinutes().toString().padStart(2, '0')}</span>
+                        </div>
+                        <div class="chat-preview">
+                            <p class="last-message">ส่งการแจ้งเตือนฉุกเฉินไปยังผู้ติดต่อทั้งหมดแล้ว</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Add to top of chat list
+                chatList.insertBefore(emergencyNotification, chatList.firstChild);
+                
+                // Highlight the notification
+                emergencyNotification.classList.add('new-message');
+                
+                // Auto remove after 10 seconds
+                setTimeout(() => {
+                    if (emergencyNotification.parentNode) {
+                        emergencyNotification.remove();
+                    }
+                }, 10000);
+            }
+        }
+       
+        // Simulate new message received
+        setTimeout(() => {
+            // Find a chat that doesn't have unread messages
+            const targetChat = document.querySelector('.chat-item[data-chat-id="2"]');
+            if (targetChat && !targetChat.classList.contains('unread')) {
+                // Update last message
+                const lastMessage = targetChat.querySelector('.last-message');
+                lastMessage.textContent = "กำลังซื้อข้าวเหนียวหมูปิ้งมาให้ครับ";
+                lastMessage.classList.add('unread');
+               
+                // Add unread badge
+                const chatPreview = targetChat.querySelector('.chat-preview');
+                const existingBadge = targetChat.querySelector('.unread-badge');
+               
+                if (!existingBadge) {
+                    const unreadBadge = document.createElement('div');
+                    unreadBadge.className = 'unread-badge';
+                    unreadBadge.textContent = '1';
+                    chatPreview.appendChild(unreadBadge);
+                }
+               
+                // Mark as unread
+                targetChat.classList.add('unread');
+               
+                // Update time
+                const timeElement = targetChat.querySelector('.chat-time');
+                const now = new Date();
+                const timeString = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                timeElement.textContent = timeString;
+               
+                // Add highlight animation
+                targetChat.classList.add('new-message');
+                setTimeout(() => {
+                    targetChat.classList.remove('new-message');
+                }, 2000);
+               
+                // Move to top of list
+                chatList.prepend(targetChat);
+            }
+        }, 5000);
+       
+        // Initialize with active filter
+        filterChats('all');
+    </script>
 </body>
 </html>
