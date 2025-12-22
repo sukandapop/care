@@ -486,6 +486,8 @@
     </style>
 </head>
 <body>
+
+<?php include 'navbar.php'   ?>
     <div class="app-container">
         <!-- Sidebar with Chat List -->
         <div class="sidebar">
