@@ -31,21 +31,30 @@
             --card-shadow-hover: 0 8px 12px rgba(0, 0, 0, 0.15);
         }
 
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
         body {
             font-family: 'Sukhumvit Set', 'Kanit', Arial, sans-serif;
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
-            height: 100vh;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         .app-container {
             display: flex;
             height: 100vh;
+            width: 100vw;
             max-width: 1400px;
             margin: 0 auto;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
         }
 
         /* Sidebar Styles */
@@ -56,6 +65,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            height: 100%;
         }
 
         /* Header Styles */
@@ -64,6 +74,7 @@
             border-bottom: 1px solid var(--border-color);
             background-color: white;
             z-index: 10;
+            flex-shrink: 0;
         }
 
         .user-info {
@@ -138,6 +149,7 @@
         .chat-list-container {
             flex: 1;
             overflow-y: auto;
+            min-height: 0;
         }
 
         .chat-list-header {
@@ -145,6 +157,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .chat-list-title {
@@ -243,7 +256,7 @@
 
         .chat-info {
             flex-grow: 1;
-            min-width: 0; /* สำหรับการตัดข้อความยาวเกิน */
+            min-width: 0;
         }
 
         .chat-header {
@@ -335,6 +348,8 @@
             display: flex;
             flex-direction: column;
             background-color: #f0f2f5;
+            height: 100%;
+            overflow: hidden;
         }
 
         .empty-chat-state {
@@ -343,6 +358,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
+            width: 100%;
             color: var(--gray-dark);
             text-align: center;
             padding: 20px;
@@ -364,63 +380,6 @@
             max-width: 400px;
             margin-bottom: 30px;
             line-height: 1.6;
-        }
-
-        /* Quick Actions Section */
-        .quick-actions {
-            padding: 15px 20px;
-            border-top: 1px solid var(--border-color);
-            background-color: white;
-        }
-
-        .quick-buttons {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .quick-button {
-            background-color: white;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .quick-button:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        /* Emergency Button */
-        .emergency-button {
-            width: 100%;
-            background-color: var(--danger-color);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .emergency-button:hover {
-            background-color: #c0392b;
         }
 
         /* Responsive Styles */
@@ -468,10 +427,6 @@
                 left: 60px;
                 bottom: 18px;
             }
-
-            .quick-buttons {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* Animation for new messages */
@@ -488,6 +443,7 @@
 <body>
 
 <?php include 'navbar.php'   ?>
+    <!-- เนื้อหาหลัก -->
     <div class="app-container">
         <!-- Sidebar with Chat List -->
         <div class="sidebar">
@@ -642,33 +598,6 @@
                     </li>
                 </ul>
             </div>
-
-            <!-- Quick Actions -->
-            <div class="quick-actions">
-                <div class="quick-buttons">
-                    <button class="quick-button" onclick="sendQuickMessage('ต้องการน้ำดื่ม')">
-                        <i class="fas fa-glass-water"></i>
-                        <span>ต้องการน้ำดื่ม</span>
-                    </button>
-                    <button class="quick-button" onclick="sendQuickMessage('ต้องการยา')">
-                        <i class="fas fa-pills"></i>
-                        <span>ต้องการยา</span>
-                    </button>
-                    <button class="quick-button" onclick="sendQuickMessage('ปวดเมื่อย')">
-                        <i class="fas fa-bed"></i>
-                        <span>ปวดเมื่อย</span>
-                    </button>
-                    <button class="quick-button" onclick="sendQuickMessage('ต้องการความช่วยเหลือ')">
-                        <i class="fas fa-hands-helping"></i>
-                        <span>ต้องการช่วยเหลือ</span>
-                    </button>
-                </div>
-                
-                <button class="emergency-button" onclick="handleEmergency()">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    แจ้งเหตุฉุกเฉิน
-                </button>
-            </div>
         </div>
        
         <!-- Main Chat Area (Empty State) -->
@@ -794,66 +723,6 @@
             });
         });
 
-        // Function to send quick messages
-        function sendQuickMessage(message) {
-            // Find active contact
-            const activeContact = document.querySelector('.chat-item.active');
-            
-            if (activeContact) {
-                const contactName = activeContact.querySelector('.chat-name').textContent;
-                alert(`ส่งข้อความด่วน "${message}" ไปยัง: ${contactName}`);
-                
-                // In a real app, this would send the message to the selected contact
-                // and navigate to the chat page with the message pre-filled
-                
-                // Example redirect with pre-filled message
-                // window.location.href = `/chat.html?contact=${contactId}&message=${encodeURIComponent(message)}`;
-            } else {
-                alert('กรุณาเลือกผู้ติดต่อก่อนส่งข้อความด่วน');
-            }
-        }
-
-        // Function to handle emergency button
-        function handleEmergency() {
-            if (confirm('ต้องการแจ้งเหตุฉุกเฉินหรือไม่? ระบบจะส่งการแจ้งเตือนไปยังทุกคนในรายการติดต่อ')) {
-                alert('ระบบได้ส่งการแจ้งเตือนเหตุฉุกเฉินแล้ว!\n\nทีมดูแลจะติดต่อกลับภายใน 5 นาที');
-                
-                // Log emergency event for demonstration
-                console.log('Emergency alert sent at:', new Date().toLocaleTimeString());
-                
-                // Show emergency notification in chat list
-                const emergencyNotification = document.createElement('li');
-                emergencyNotification.className = 'chat-item';
-                emergencyNotification.innerHTML = `
-                    <div class="avatar-placeholder" style="background-color: #e74c3c;">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="chat-info">
-                        <div class="chat-header">
-                            <h3 class="chat-name">แจ้งเหตุฉุกเฉิน</h3>
-                            <span class="chat-time">${new Date().getHours().toString().padStart(2, '0')}:${new Date().getMinutes().toString().padStart(2, '0')}</span>
-                        </div>
-                        <div class="chat-preview">
-                            <p class="last-message">ส่งการแจ้งเตือนฉุกเฉินไปยังผู้ติดต่อทั้งหมดแล้ว</p>
-                        </div>
-                    </div>
-                `;
-                
-                // Add to top of chat list
-                chatList.insertBefore(emergencyNotification, chatList.firstChild);
-                
-                // Highlight the notification
-                emergencyNotification.classList.add('new-message');
-                
-                // Auto remove after 10 seconds
-                setTimeout(() => {
-                    if (emergencyNotification.parentNode) {
-                        emergencyNotification.remove();
-                    }
-                }, 10000);
-            }
-        }
-       
         // Simulate new message received
         setTimeout(() => {
             // Find a chat that doesn't have unread messages
