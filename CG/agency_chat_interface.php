@@ -410,6 +410,7 @@
             <!-- Header -->
             <div class="sidebar-header">
                 <div class="user-info">
+                    <div class="user-avatar">ธ</div>
                     <div class="user-details">
                         <h2>ธีรวัฒน์ จิตต์เมตตา</h2>
                         <span class="role">Case Manager</span>
