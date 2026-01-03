@@ -36,7 +36,7 @@
             font-family: "Kanit", sans-serif;
             background: linear-gradient(135deg, #f9faffff 0%, #ffffffff 100%);
             min-height: 100vh;
-            padding: 20px;
+        
         }
 
         .preview-container {
