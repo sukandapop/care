@@ -588,6 +588,7 @@
     </style>
 </head>
 <body>
+    
     <?php include 'navbar.php'; ?>
 
     <div class="main-container">

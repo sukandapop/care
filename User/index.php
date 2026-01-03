@@ -6,20 +6,14 @@
     <title>หน้าหลัก </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="custom-styles.css">
+    
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   
-       <link rel="stylesheet" href="../css/index.css">
-
 </head>
 <style>
 
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+ 
 
     
 :root {
@@ -39,12 +33,12 @@
     --mango-dark: #E6A000;
 }
 
-.body  {
-    background: linear-gradient(135deg, rgb(34, 171, 250) 0%, #ffffffff 100%);
+body {
+    background: linear-gradient(135deg, rgb(34, 171, 250) 0%, #ffffff 100%);
     font-family: 'Kanit', sans-serif;
-    /* ใช้ฟอนต์ Kanit สำหรับทั้งเว็บไซต์ */
-   
 }
+
+
 
 /* ลบขีดเส้นใต้และกำหนดรูปแบบลิงก์สำหรับเมนู */
 .menu-item {
@@ -91,7 +85,7 @@
     
   <?php include 'navbar.php'   ?>
 
-    <div class="container-fluid">
+    <div class="container-fluid px-4">
         <section class="text-center my-1 ">
           <br>
            <div class="profile-image mx-auto mb-3 bg-light rounded-circle d-flex align-items-center justify-content-center shadow-sm">
