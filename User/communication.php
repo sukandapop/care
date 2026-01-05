@@ -166,28 +166,6 @@
             color: var(--gray-dark);
         }
 
-        .filter-options {
-            display: flex;
-            gap: 10px;
-        }
-
-        .filter-btn {
-            background: none;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 5px 10px;
-            font-size: 12px;
-            color: var(--gray-dark);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
         .chat-list {
             list-style: none;
         }
@@ -352,6 +330,166 @@
             overflow: hidden;
         }
 
+        /* Chat Window Styles (Initially hidden) */
+        .chat-window {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Chat Header */
+        .chat-header-bar {
+            background-color: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .chat-contact-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chat-contact-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .chat-contact-details h3 {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+
+        .chat-contact-status {
+            font-size: 13px;
+            color: var(--gray-dark);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .chat-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .chat-action-btn {
+            background: none;
+            border: none;
+            color: var(--gray-dark);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .chat-action-btn:hover {
+            color: var(--primary-color);
+        }
+
+        /* Chat Messages Area */
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .message-incoming {
+            align-self: flex-start;
+            background-color: white;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message-outgoing {
+            align-self: flex-end;
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message-time {
+            font-size: 11px;
+            margin-top: 5px;
+            opacity: 0.7;
+            text-align: right;
+        }
+
+        .message-incoming .message-time {
+            color: var(--gray-dark);
+        }
+
+        .message-outgoing .message-time {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Chat Input Area */
+        .chat-input-area {
+            padding: 15px 20px;
+            background-color: white;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            font-family: 'Sukhumvit Set', 'Kanit', Arial, sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .send-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .send-button:hover {
+            background-color: #3a7bc8;
+        }
+
+        /* Empty Chat State */
         .empty-chat-state {
             display: flex;
             flex-direction: column;
@@ -382,6 +520,17 @@
             line-height: 1.6;
         }
 
+        /* Mobile Back Button */
+        .mobile-back-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--primary-color);
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
         /* Responsive Styles */
         @media (max-width: 992px) {
             .sidebar {
@@ -401,8 +550,22 @@
            
             .main-chat-area {
                 display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 100;
             }
            
+            .main-chat-area.active {
+                display: flex;
+            }
+
+            .mobile-back-btn {
+                display: block;
+            }
+
             .chat-list-container {
                 padding-bottom: 20px;
             }
@@ -427,6 +590,18 @@
                 left: 60px;
                 bottom: 18px;
             }
+
+            .chat-messages {
+                padding: 15px;
+            }
+
+            .chat-input-area {
+                padding: 12px 15px;
+            }
+
+            .chat-header-bar {
+                padding: 12px 15px;
+            }
         }
 
         /* Animation for new messages */
@@ -438,12 +613,21 @@
         .new-message {
             animation: highlightNew 2s ease-out;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message {
+            animation: fadeIn 0.3s ease-out;
+        }
     </style>
 </head>
 <body>
 
 <?php include 'navbar.php'   ?>
-    <!-- เนื้อหาหลัก -->
+
     <div class="app-container">
         <!-- Sidebar with Chat List -->
         <div class="sidebar">
@@ -467,16 +651,11 @@
             <div class="chat-list-container">
                 <div class="chat-list-header">
                     <h3 class="chat-list-title">การสนทนาทั้งหมด</h3>
-                    <div class="filter-options">
-                        <button class="filter-btn active" data-filter="all">ทั้งหมด</button>
-                        <button class="filter-btn" data-filter="unread">ยังไม่อ่าน</button>
-                        <button class="filter-btn" data-filter="family">ครอบครัว</button>
-                    </div>
                 </div>
                
                 <ul class="chat-list" id="chatList">
                     <!-- ลูกสาว -->
-                    <li class="chat-item active unread" data-chat-id="1" data-category="family">
+                    <li class="chat-item active unread" data-chat-id="1" data-category="family" data-contact-name="สมหญิง (ลูกสาว)" data-avatar-color="family">
                         <div class="avatar-placeholder family-avatar-bg">สม</div>
                         <div class="chat-status status-online"></div>
                         <div class="chat-info">
@@ -492,7 +671,7 @@
                     </li>
                    
                     <!-- ลูกชาย -->
-                    <li class="chat-item" data-chat-id="2" data-category="family">
+                    <li class="chat-item" data-chat-id="2" data-category="family" data-contact-name="สมชาย (ลูกชาย)" data-avatar-color="family">
                         <div class="avatar-placeholder family-avatar-bg">สมช</div>
                         <div class="chat-status status-away"></div>
                         <div class="chat-info">
@@ -507,7 +686,7 @@
                     </li>
                    
                     <!-- อาสาสมัคร -->
-                    <li class="chat-item" data-chat-id="3" data-category="volunteer">
+                    <li class="chat-item" data-chat-id="3" data-category="volunteer" data-contact-name="อสม. สมหมาย" data-avatar-color="volunteer">
                         <div class="avatar-placeholder volunteer-avatar-bg">อ</div>
                         <div class="chat-status status-online"></div>
                         <div class="chat-info">
@@ -523,7 +702,7 @@
                     </li>
                    
                     <!-- Case Manager -->
-                    <li class="chat-item" data-chat-id="4" data-category="cm">
+                    <li class="chat-item" data-chat-id="4" data-category="cm" data-contact-name="พญ. กรวรรณ สุขใจ" data-avatar-color="cm">
                         <div class="avatar-placeholder cm-avatar-bg">พญ</div>
                         <div class="chat-status status-busy"></div>
                         <div class="chat-info">
@@ -538,7 +717,7 @@
                     </li>
                    
                     <!-- หน่วยงานสุขภาพ -->
-                    <li class="chat-item" data-chat-id="5" data-category="agency">
+                    <li class="chat-item" data-chat-id="5" data-category="agency" data-contact-name="สำนักงานหลักประกันสุขภาพ" data-avatar-color="agency">
                         <div class="avatar-placeholder agency-avatar-bg">สธ</div>
                         <div class="chat-info">
                             <div class="chat-header">
@@ -552,7 +731,7 @@
                     </li>
                    
                     <!-- อาสาสมัครคนที่ 2 -->
-                    <li class="chat-item unread" data-chat-id="6" data-category="volunteer">
+                    <li class="chat-item unread" data-chat-id="6" data-category="volunteer" data-contact-name="อสม. สมร" data-avatar-color="volunteer">
                         <div class="avatar-placeholder volunteer-avatar-bg">สมร</div>
                         <div class="chat-status status-offline"></div>
                         <div class="chat-info">
@@ -568,7 +747,7 @@
                     </li>
                    
                     <!-- โรงพยาบาล -->
-                    <li class="chat-item" data-chat-id="7" data-category="agency">
+                    <li class="chat-item" data-chat-id="7" data-category="agency" data-contact-name="โรงพยาบาลใกล้บ้าน" data-avatar-color="agency">
                         <div class="avatar-placeholder agency-avatar-bg">รพ</div>
                         <div class="chat-info">
                             <div class="chat-header">
@@ -582,7 +761,7 @@
                     </li>
                    
                     <!-- กลุ่มครอบครัว -->
-                    <li class="chat-item" data-chat-id="8" data-category="family">
+                    <li class="chat-item" data-chat-id="8" data-category="family" data-contact-name="กลุ่มครอบครัว" data-avatar-color="family">
                         <div class="avatar-placeholder family-avatar-bg">
                             <i class="fas fa-users"></i>
                         </div>
@@ -600,9 +779,10 @@
             </div>
         </div>
        
-        <!-- Main Chat Area (Empty State) -->
-        <div class="main-chat-area">
-            <div class="empty-chat-state">
+        <!-- Main Chat Area -->
+        <div class="main-chat-area" id="mainChatArea">
+            <!-- Empty State (Initially visible) -->
+            <div class="empty-chat-state" id="emptyChatState">
                 <div class="empty-chat-icon">
                     <i class="fas fa-comment-dots"></i>
                 </div>
@@ -613,6 +793,64 @@
                     <span>เลือกการสนทนาจากรายการ</span>
                 </div>
             </div>
+
+            <!-- Chat Window (Initially hidden) -->
+            <div class="chat-window" id="chatWindow">
+                <!-- Chat Header -->
+                <div class="chat-header-bar">
+                    <div class="chat-contact-info">
+                        <!-- Mobile back button -->
+                        <button class="mobile-back-btn" id="mobileBackBtn">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <div class="chat-contact-avatar" id="chatContactAvatar">
+                            สม
+                        </div>
+                        <div class="chat-contact-details">
+                            <h3 id="chatContactName">สมหญิง (ลูกสาว)</h3>
+                            <div class="chat-contact-status" id="chatContactStatus">
+                                <div class="status-indicator status-online"></div>
+                                <span>ออนไลน์</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Removed call and video buttons, only menu button remains -->
+                    <div class="chat-actions">
+                        <button class="chat-action-btn" title="เมนู">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be dynamically inserted here -->
+                    <div class="message message-incoming">
+                        <p>พ่อสบายดีไหมคะ วันนี้รู้สึกอย่างไรบ้าง</p>
+                        <div class="message-time">10:23</div>
+                    </div>
+                    <div class="message message-outgoing">
+                        <p>วันนี้รู้สึกดีขึ้นเล็กน้อย แต่ยังปวดหลังอยู่บ้าง</p>
+                        <div class="message-time">10:25</div>
+                    </div>
+                    <div class="message message-incoming">
+                        <p>ดีใจจังค่ะ เดี๋ยวเย็นนี้จะเอาข้าวมาให้กินนะคะ</p>
+                        <div class="message-time">10:26</div>
+                    </div>
+                    <div class="message message-outgoing">
+                        <p>ขอบใจมากเลยลูก</p>
+                        <div class="message-time">10:27</div>
+                    </div>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="chat-input-area">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="พิมพ์ข้อความ..." autocomplete="off">
+                    <button class="send-button" id="sendButton">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -620,53 +858,153 @@
         // DOM Elements
         const chatList = document.getElementById('chatList');
         const searchInput = document.getElementById('searchInput');
-        const filterButtons = document.querySelectorAll('.filter-btn');
         const chatItems = document.querySelectorAll('.chat-item');
-       
-        // Filter chats by category
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all filter buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-               
-                // Add active class to clicked button
-                this.classList.add('active');
-               
-                const filter = this.getAttribute('data-filter');
-                filterChats(filter);
-            });
-        });
-       
-        // Filter chat function
-        function filterChats(filter) {
-            chatItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-               
-                if (filter === 'all') {
-                    item.style.display = 'flex';
-                } else if (filter === 'unread') {
-                    if (item.classList.contains('unread')) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                } else if (filter === 'family') {
-                    if (category === 'family') {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                } else {
-                    // For other specific categories
-                    if (category === filter) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                }
-            });
+        const emptyChatState = document.getElementById('emptyChatState');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const mainChatArea = document.getElementById('mainChatArea');
+        const mobileBackBtn = document.getElementById('mobileBackBtn');
+        const chatContactName = document.getElementById('chatContactName');
+        const chatContactAvatar = document.getElementById('chatContactAvatar');
+        const chatContactStatus = document.getElementById('chatContactStatus');
+
+        // Chat data for each contact
+        const chatData = {
+            1: {
+                name: "สมหญิง (ลูกสาว)",
+                avatarColor: "family",
+                status: "online",
+                statusText: "ออนไลน์",
+                messages: [
+                    { type: "incoming", text: "พ่อสบายดีไหมคะ วันนี้รู้สึกอย่างไรบ้าง", time: "10:23" },
+                    { type: "outgoing", text: "วันนี้รู้สึกดีขึ้นเล็กน้อย แต่ยังปวดหลังอยู่บ้าง", time: "10:25" },
+                    { type: "incoming", text: "ดีใจจังค่ะ เดี๋ยวเย็นนี้จะเอาข้าวมาให้กินนะคะ", time: "10:26" },
+                    { type: "outgoing", text: "ขอบใจมากเลยลูก", time: "10:27" }
+                ]
+            },
+            2: {
+                name: "สมชาย (ลูกชาย)",
+                avatarColor: "family",
+                status: "away",
+                statusText: "ไม่อยู่",
+                messages: [
+                    { type: "incoming", text: "เย็นนี้จะเอาข้าวมาฝากครับ", time: "09:15" },
+                    { type: "outgoing", text: "ดีจังเลย มีข้าวเหนียวหมูปิ้งด้วยไหม", time: "09:16" },
+                    { type: "incoming", text: "มีแน่นอนครับ จะซื้อมาฝาก", time: "09:17" }
+                ]
+            },
+            3: {
+                name: "อสม. สมหมาย",
+                avatarColor: "volunteer",
+                status: "online",
+                statusText: "ออนไลน์",
+                messages: [
+                    { type: "incoming", text: "พรุ่งนี้จะแวะไปวัดความดันให้นะครับ", time: "เมื่อวาน" },
+                    { type: "outgoing", text: "ขอบคุณมากนะครับ", time: "เมื่อวาน" }
+                ]
+            },
+            4: {
+                name: "พญ. กรวรรณ สุขใจ",
+                avatarColor: "cm",
+                status: "busy",
+                statusText: "ไม่ว่าง",
+                messages: [
+                    { type: "incoming", text: "ส่งรายงานสุขภาพประจำสัปดาห์แล้ว", time: "เมื่อวาน" },
+                    { type: "outgoing", text: "ขอบคุณครับ รับทราบแล้ว", time: "เมื่อวาน" }
+                ]
+            },
+            5: {
+                name: "สำนักงานหลักประกันสุขภาพ",
+                avatarColor: "agency",
+                status: "offline",
+                statusText: "ออฟไลน์",
+                messages: [
+                    { type: "incoming", text: "ขอข้อมูลเพิ่มเติมสำหรับการต่ออายุบัตร", time: "25 มี.ค." },
+                    { type: "outgoing", text: "ต้องส่งเอกสารอะไรบ้างคะ", time: "25 มี.ค." }
+                ]
+            }
+        };
+
+        // Function to load chat messages
+        function loadChatMessages(chatId) {
+            chatMessages.innerHTML = '';
+            
+            if (chatData[chatId]) {
+                const data = chatData[chatId];
+                
+                data.messages.forEach(msg => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `message message-${msg.type}`;
+                    
+                    messageDiv.innerHTML = `
+                        <p>${msg.text}</p>
+                        <div class="message-time">${msg.time}</div>
+                    `;
+                    
+                    chatMessages.appendChild(messageDiv);
+                });
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } else {
+                // Default message if no chat data
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message message-incoming';
+                messageDiv.innerHTML = `
+                    <p>สวัสดีค่ะ มีอะไรให้ช่วยไหมคะ</p>
+                    <div class="message-time">${new Date().getHours().toString().padStart(2, '0')}:${new Date().getMinutes().toString().padStart(2, '0')}</div>
+                `;
+                chatMessages.appendChild(messageDiv);
+            }
         }
-       
+
+        // Function to update chat header
+        function updateChatHeader(chatId, contactName, avatarColor, status, statusText) {
+            chatContactName.textContent = contactName;
+            
+            // Set avatar color
+            chatContactAvatar.className = 'chat-contact-avatar';
+            if (avatarColor === 'family') {
+                chatContactAvatar.style.backgroundColor = 'var(--secondary-color)';
+            } else if (avatarColor === 'volunteer') {
+                chatContactAvatar.style.backgroundColor = '#e67e22';
+            } else if (avatarColor === 'cm') {
+                chatContactAvatar.style.backgroundColor = 'var(--primary-color)';
+            } else if (avatarColor === 'agency') {
+                chatContactAvatar.style.backgroundColor = '#9b59b6';
+            }
+            
+            // Set avatar text (first character of name)
+            const firstChar = contactName.charAt(0);
+            chatContactAvatar.textContent = firstChar;
+            
+            // Update status
+            const statusIndicator = chatContactStatus.querySelector('.status-indicator');
+            statusIndicator.className = 'status-indicator';
+            statusIndicator.classList.add(`status-${status}`);
+            
+            const statusTextSpan = chatContactStatus.querySelector('span');
+            statusTextSpan.textContent = statusText;
+        }
+
+        // Function to open chat
+        function openChat(chatId, contactName, avatarColor, status = 'online', statusText = 'ออนไลน์') {
+            // Hide empty state, show chat window
+            emptyChatState.style.display = 'none';
+            chatWindow.style.display = 'flex';
+            
+            // Update chat header and load messages
+            updateChatHeader(chatId, contactName, avatarColor, status, statusText);
+            loadChatMessages(chatId);
+            
+            // For mobile, show main chat area
+            if (window.innerWidth <= 768) {
+                mainChatArea.classList.add('active');
+            }
+        }
+
         // Search function
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase().trim();
@@ -711,16 +1049,102 @@
                     }, 2000);
                 }
                
-                // In a real app, this would load the chat messages
+                // Get chat data
                 const chatId = this.getAttribute('data-chat-id');
-                const chatName = this.querySelector('.chat-name').textContent;
-                console.log(`กำลังโหลดการสนทนาที่ ${chatId} กับ ${chatName}`);
+                const contactName = this.getAttribute('data-contact-name');
+                const avatarColor = this.getAttribute('data-avatar-color');
                
-                // For mobile, we would navigate to chat screen
-                if (window.innerWidth <= 768) {
-                    alert(`บนแอปจริงจะเปิดหน้าการสนทนากับ: ${chatName}`);
+                // Get status from chat status element
+                const statusElement = this.querySelector('.chat-status');
+                let status = 'online';
+                let statusText = 'ออนไลน์';
+                
+                if (statusElement) {
+                    if (statusElement.classList.contains('status-online')) {
+                        status = 'online';
+                        statusText = 'ออนไลน์';
+                    } else if (statusElement.classList.contains('status-away')) {
+                        status = 'away';
+                        statusText = 'ไม่อยู่';
+                    } else if (statusElement.classList.contains('status-busy')) {
+                        status = 'busy';
+                        statusText = 'ไม่ว่าง';
+                    } else if (statusElement.classList.contains('status-offline')) {
+                        status = 'offline';
+                        statusText = 'ออฟไลน์';
+                    }
                 }
+               
+                // Open the chat
+                openChat(chatId, contactName, avatarColor, status, statusText);
             });
+        });
+
+        // Send message function
+        function sendMessage() {
+            const messageText = chatInput.value.trim();
+            
+            if (messageText) {
+                // Create outgoing message
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message message-outgoing';
+                
+                const now = new Date();
+                const timeString = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                
+                messageDiv.innerHTML = `
+                    <p>${messageText}</p>
+                    <div class="message-time">${timeString}</div>
+                `;
+                
+                chatMessages.appendChild(messageDiv);
+                chatInput.value = '';
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simulate reply after 1 second
+                setTimeout(() => {
+                    const replyDiv = document.createElement('div');
+                    replyDiv.className = 'message message-incoming';
+                    
+                    // Simple auto-reply based on message content
+                    let replyText = "ได้รับข้อความแล้วค่ะ";
+                    
+                    if (messageText.includes('ขอบคุณ') || messageText.includes('ขอบใจ')) {
+                        replyText = "ด้วยความยินดีค่ะ";
+                    } else if (messageText.includes('สบายดี') || messageText.includes('เป็นอย่างไร')) {
+                        replyText = "ดีใจที่ได้ยินเช่นนั้นค่ะ";
+                    } else if (messageText.includes('หิว') || messageText.includes('อาหาร')) {
+                        replyText = "เดี๋ยวจัดอาหารให้ค่ะ";
+                    }
+                    
+                    replyDiv.innerHTML = `
+                        <p>${replyText}</p>
+                        <div class="message-time">${now.getHours().toString().padStart(2, '0')}:${(now.getMinutes() + 1).toString().padStart(2, '0')}</div>
+                    `;
+                    
+                    chatMessages.appendChild(replyDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        // Send button click
+        sendButton.addEventListener('click', sendMessage);
+
+        // Enter key to send message
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Mobile back button
+        mobileBackBtn.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                mainChatArea.classList.remove('active');
+            }
         });
 
         // Simulate new message received
@@ -763,9 +1187,6 @@
                 chatList.prepend(targetChat);
             }
         }, 5000);
-       
-        // Initialize with active filter
-        filterChats('all');
     </script>
 </body>
 </html>
