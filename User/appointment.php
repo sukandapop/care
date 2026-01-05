@@ -420,6 +420,9 @@
             .appointment-actions {
                 flex-direction: column;
             }
+
+          
+
         }
     </style>
 </head>
@@ -434,165 +437,15 @@
 
         <!-- Calendar Section -->
         <div class="calendar-section">
-            <div class="calendar-header">
-                <h2 class="month-year">กุมภาพันธ์ 2025</h2>
-                <div class="calendar-controls">
-                    <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
-                    <button id="next-month"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
+    <iframe src="https://calendar.google.com/calendar/embed?src=c_a2faa58e894d0f4824fd058f4be6834c14b463de076da0dc261164146a56e421%40group.calendar.google.com&ctz=Asia%2FBangkok" 
+        style="border: 0" 
+        width="800" 
+        height="600" 
+        frameborder="0" 
+        scrolling="no">
+    </iframe>
+</div>
 
-            <table class="calendar-table">
-                <thead>
-                    <tr>
-                        <th>อาทิตย์</th>
-                        <th>จันทร์</th>
-                        <th>อังคาร</th>
-                        <th>พุธ</th>
-                        <th>พฤหัส</th>
-                        <th>ศุกร์</th>
-                        <th>เสาร์</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="day-number">26</div>
-                        </td>
-                        <td>
-                            <div class="day-number">27</div>
-                        </td>
-                        <td>
-                            <div class="day-number">28</div>
-                        </td>
-                        <td>
-                            <div class="day-number">29</div>
-                        </td>
-                        <td>
-                            <div class="day-number">30</div>
-                        </td>
-                        <td>
-                            <div class="day-number">31</div>
-                        </td>
-                        <td>
-                            <div class="day-number">1</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="day-number">2</div>
-                            <div class="appointment-indicator">
-                                <div class="appointment-dot consultation"></div>
-                                <div class="appointment-dot home-visit"></div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="day-number">3</div>
-                        </td>
-                        <td>
-                            <div class="day-number">4</div>
-                        </td>
-                        <td>
-                            <div class="day-number">5</div>
-                            <div class="appointment-indicator">
-                                <div class="appointment-dot follow-up"></div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="day-number">6</div>
-                        </td>
-                        <td>
-                            <div class="day-number">7</div>
-                        </td>
-                        <td>
-                            <div class="day-number">8</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="day-number">9</div>
-                        </td>
-                        <td>
-                            <div class="day-number">10</div>
-                        <div class="appointment-indicator">
-                                <div class="appointment-dot urgent"></div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="day-number">11</div>
-                        </td>
-                        <td>
-                            <div class="day-number">12</div>
-                        </td>
-                        <td>
-                            <div class="day-number">13</div>
-                        </td>
-                        <td>
-                            <div class="day-number">14</div>
-                            <div class="appointment-indicator">
-                                <div class="appointment-dot consultation"></div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="day-number">15</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="day-number">16</div>
-                        </td>
-                        <td>
-                            <div class="day-number">17</div>
-                        </td>
-                        <td>
-                            <div class="day-number">18</div>
-                        </td>
-                        <td>
-                            <div class="day-number">19</div>
-                        </td>
-                        <td>
-                            <div class="day-number">20</div>
-                            <div class="appointment-indicator">
-                                <div class="appointment-dot home-visit"></div>
-                                <div class="appointment-dot follow-up"></div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="day-number">21</div>
-                        </td>
-                        <td>
-                            <div class="day-number">22</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="day-number">23</div>
-                        </td>
-                        <td>
-                            <div class="day-number">24</div>
-                        </td>
-                        <td>
-                            <div class="day-number">25</div>
-                            <div class="appointment-indicator">
-                                <div class="appointment-dot consultation"></div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="day-number">26</div>
-                        </td>
-                        <td>
-                            <div class="day-number">27</div>
-                        </td>
-                        <td>
-                            <div class="day-number">28</div>
-                        </td>
-                        <td>
-                            <div class="day-number">1</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
         <!-- Appointments List -->
         <div class="appointments-list">

@@ -36,7 +36,7 @@
             font-family: "Kanit", sans-serif;
             background: linear-gradient(135deg, #f9faffff 0%, #ffffffff 100%);
             min-height: 100vh;
-            padding: 20px;
+        
         }
 
         .preview-container {
@@ -159,10 +159,10 @@
             width: 100%;
         }
 
-        .nav-modern .nav-link.active {
-            /* color: #4cc9f0; */
+        /* .nav-modern .nav-link.active {
+            
             background: rgba(93, 152, 255, 0.1);
-        }
+        } */
 
         .nav-modern .nav-link.active::before {
             width: 100%;
@@ -343,7 +343,10 @@
 </head>
 
 <body>
-   
+   <?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
+
         <nav class="navbar navbar-expand-lg navbar-modern">
             <div class="container-fluid">
                 <div class="brand-container">
@@ -365,32 +368,33 @@
                 <div class="collapse navbar-collapse" id="modernNavbar">
                     <ul class="navbar-nav ms-auto nav-modern">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.php">
-                                <i class="fa-solid fa-house"></i> หน้าแรก
-                            </a>
+                            <a class="nav-link <?= $currentPage == 'index.php' ? 'active' : '' ?>" href="index.php">
+    <i class="fa-solid fa-house"></i> หน้าแรก
+</a>
+
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="take_medicine.php">
+                            <a class="nav-link <?= $currentPage == 'take_medicine.php' ? 'active' : '' ?>" href="take_medicine.php">
                                 <i class="fa-solid fa-pills"></i> รับประทานยา
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="appointment.php">
+                            <a class="nav-link <?= $currentPage == 'appointment.php' ? 'active' : '' ?>" href="appointment.php">
                                 <i class="bi bi-calendar-check"></i> นัดหมาย
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="knowledge_base.php">
+                            <a class="nav-link <?= $currentPage == 'knowledge_base.php' ? 'active' : '' ?>" href="knowledge_base.php">
                                 <i class=" bi bi-book"></i> คลังความรู้
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="health_report.php">
+                            <a class="nav-link <?= $currentPage == 'health_report.php' ? 'active' : '' ?>" href="health_report.php">
                                 <i class="bi bi-activity"></i> รายงานสุขภาพ
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="communication.php">
+                            <a class="nav-link <?= $currentPage == 'communication.php' ? 'active' : '' ?>" href="communication.php">
                                 <i class="bi bi-chat-text"></i> พูดคุยให้คำปรึกษา
                             </a>
                         </li>
@@ -398,11 +402,7 @@
 
                     <div class="user-menu-wrapper d-lg-none">
                         <ul class="navbar-nav w-100">
-                             <li class="nav-item">
-                                <a class="nav-link" href="settings.php">
-                                    <i class="fa-solid fa-gear"></i> การตั้งค่า
-                                </a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link text-danger" href="logout.php">
                                     <i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ
@@ -419,7 +419,6 @@
                         </div>
                         
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownDesktop">
-                            <li><a class="dropdown-item" href="settings.php"><i class="fa-solid fa-gear"></i> การตั้งค่า</a></li>
                             <li><a class="dropdown-item text-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
                         </ul>
                     </div>
@@ -449,25 +448,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ปิดเมนูเมื่อคลิกลิงก์ (สำหรับมือถือ)
-    document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
-        link.addEventListener('click', function() {
-            // ตรวจสอบเฉพาะเมื่ออยู่บนหน้าจอขนาดเล็ก
-            if (window.innerWidth < 992) {
-                // ปิดเมนูโดยใช้ Bootstrap Collapse API
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, {toggle: false});
-                bsCollapse.hide();
-                navbarToggler.classList.remove('active');
-            }
+    document.querySelectorAll('.nav-modern .nav-link').forEach(link => {
+    link.addEventListener('click', function() {
 
-            // อัพเดทสถานะ active สำหรับ nav-link เท่านั้น
-            if (this.classList.contains('nav-link') && !this.classList.contains('appointment-btn-modern')) {
-                document.querySelectorAll('.nav-link').forEach(item => {
-                    item.classList.remove('active');
-                });
-                this.classList.add('active');
-            }
+        if (this.closest('.appointment-btn-modern')) return;
+
+        document.querySelectorAll('.nav-modern .nav-link').forEach(item => {
+            item.classList.remove('active');
         });
+
+        this.classList.add('active');
     });
+});
+
 
     // ฟังก์ชันสำหรับตรวจสอบและอัพเดทสถานะเริ่มต้น
     function updateTogglerState() {
