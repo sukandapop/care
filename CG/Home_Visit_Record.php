@@ -168,6 +168,9 @@
     </style>
 </head>
 <body>
+
+<?php include 'navbar.php'; ?>
+
     <div class="container">
         <h1>บันทึกการเยี่ยมบ้านผู้สูงอายุติดเตียง</h1>
         
