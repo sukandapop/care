@@ -139,28 +139,7 @@
             color: var(--gray-dark);
         }
 
-        .filter-options {
-            display: flex;
-            gap: 10px;
-        }
-
-        .filter-btn {
-            background: none;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 5px 10px;
-            font-size: 12px;
-            color: var(--gray-dark);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
+        /* ลบ CSS สำหรับ filter-options และ filter-btn ออก */
         .chat-list {
             list-style: none;
         }
@@ -647,6 +626,9 @@
     </style>
 </head>
 <body>
+
+<?php include 'navbar.php'; ?>
+
     <div class="app-container">
         <!-- Sidebar with Chat List -->
         <div class="sidebar">
@@ -670,11 +652,6 @@
             <div class="chat-list-container">
                 <div class="chat-list-header">
                     <h3 class="chat-list-title">การสนทนาทั้งหมด</h3>
-                    <div class="filter-options">
-                        <button class="filter-btn active" data-filter="all">ทั้งหมด</button>
-                        <button class="filter-btn" data-filter="unread">ยังไม่อ่าน</button>
-                        <button class="filter-btn" data-filter="groups">กลุ่ม</button>
-                    </div>
                 </div>
                
                 <ul class="chat-list" id="chatList">
@@ -969,7 +946,6 @@
         // DOM Elements
         const chatList = document.getElementById('chatList');
         const searchInput = document.getElementById('searchInput');
-        const filterButtons = document.querySelectorAll('.filter-btn');
         const chatItems = document.querySelectorAll('.chat-item');
         const emptyChatState = document.querySelector('.empty-chat-state');
         const chatDetail = document.getElementById('chatDetail');
@@ -986,50 +962,6 @@
         // Currently selected chat ID
         let currentChatId = 1;
 
-        // Filter chats by category
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all filter buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-               
-                // Add active class to clicked button
-                this.classList.add('active');
-               
-                const filter = this.getAttribute('data-filter');
-                filterChats(filter);
-            });
-        });
-       
-        // Filter chat function
-        function filterChats(filter) {
-            chatItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-               
-                if (filter === 'all') {
-                    item.style.display = 'flex';
-                } else if (filter === 'unread') {
-                    if (item.classList.contains('unread')) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                } else if (filter === 'groups') {
-                    if (category === 'group') {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                } else {
-                    // For other specific categories
-                    if (category === filter) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                }
-            });
-        }
-       
         // Search function
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase().trim();
@@ -1326,8 +1258,7 @@
             }
         }, 5000);
        
-        // Initialize with active filter and load first chat
-        filterChats('all');
+        // Initialize and load first chat
         loadChat(currentChatId);
        
         // Add menu functionality
