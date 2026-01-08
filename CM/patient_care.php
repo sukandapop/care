@@ -5,55 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบติดตามการดูแลผู้ป่วย</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Sarabun', sans-serif;
-            padding-top: 20px;
-        }
-        .header {
-            background-color: #2c7fb8;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .section-title {
-            color: #2c7fb8;
-            border-bottom: 2px solid #2c7fb8;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .card {
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .family-card {
-            border-left: 5px solid #7fcdbb;
-        }
-        .volunteer-card {
-            border-left: 5px solid #edf8b1;
-        }
-        .patient-list {
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .stat-card {
-            background-color: #2c7fb8;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="css/patient_care.css">
 </head>
 <body>
+    <?php include 'navbar.php'; ?>
     <div class="container">
         <div class="header text-center">
             <h1>ระบบติดตามการดูแลผู้ป่วย</h1>

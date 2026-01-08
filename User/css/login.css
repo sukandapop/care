@@ -1,0 +1,31 @@
+body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .login-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            max-width: 440px;
+            width: 95%;
+            padding: 2.5rem;
+            border-top: 5px solid #47a6ff; /* ฟ้า */
+        }
+
+        .input-field {
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .input-field:focus {
+            border-color: #47a6ff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* blue focus */
+        }

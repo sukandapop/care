@@ -6,36 +6,8 @@
     <title>Care Connect: เลือกบทบาท</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Design Notes:
-        1. Use Sarabun font for clean, professional look.
-        2. Light blue background as shown in the provided image.
-        3. Role cards are centered and use distinct colors for action buttons (Login).
-        4. Fully responsive layout using flexbox and grid, adapting well to mobile screens.
-    -->
-    <style>
-        body {
-            font-family: 'Sarabun', sans-serif;
-            background-color: #87ceeb; /* Sky Blue - Similar to the image provided */
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .card {
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        .login-button {
-            border-radius: 0.75rem; /* Rounded corners */
-        }
-    </style>
+    <link rel="stylesheet" href="./css/login_role_selection.css">
+   
 </head>
 <body>
 

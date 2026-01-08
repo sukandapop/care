@@ -35,7 +35,7 @@
 
 body {
     background: linear-gradient(135deg, rgb(34, 171, 250) 0%, #ffffff 100%);
-    font-family: 'Kanit', sans-serif;
+    
 }
 
 
@@ -81,7 +81,7 @@ body {
 
 
 </style>
-<body  style="font-family: 'Sarabun', sans-serif;">
+<body  style=" font-family: 'Sukhumvit Set', 'Kanit', Arial, sans-serif;;">
     
   <?php include 'navbar.php'   ?>
 

@@ -1,0 +1,152 @@
+
+
+    
+:root {
+    --primary: #4361ee;
+    --secondary: #3f37c9;
+    --success: #4cc9f0;
+    --info: #36b9cc;
+    --warning: #f6c23e;
+    --danger: #e74a3b;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --purple: #7209b7;
+    --teal: #20c997;
+    --pink: #e83e8c;
+    --cyan: #0dcaf0;
+    --mango: #FFC107;
+    --mango-dark: #E6A000;
+}
+
+.body  {
+    background: linear-gradient(135deg, rgb(34, 171, 250) 0%, #ffffffff 100%);
+    font-family: 'Kanit', sans-serif;
+    /* ใช้ฟอนต์ Kanit สำหรับทั้งเว็บไซต์ */
+   
+}
+
+/* ลบขีดเส้นใต้และกำหนดรูปแบบลิงก์สำหรับเมนู */
+.menu-item {
+    text-decoration: none;
+    color: var(--dark);
+    /* สีข้อความดำ */
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    /* ลบขอบ card */
+}
+
+/* Effect เมื่อวางเมาส์เหนือปุ่ม */
+.menu-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ปรับสีพื้นหลังหลัก */
+.bg-primary {
+    background-color: var(--info);
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* ควรเปลี่ยน path ให้เป็น relative path */
+    background-image: url('../images/Gemini_Generated_Image_pkdz7lpkdz7lpkdz.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    margin: 0 auto 3px auto;
+    background-color: lightblue;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* สไตล์สำหรับส่วนแสดงรายชื่อผู้สูงอายุ */
+.elderly-section {
+    margin: 2.5rem 0;
+}
+
+.elderly-card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.elderly-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.elderly-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.elderly-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.elderly-age {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.elderly-relationship {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: #e7f7ef;
+    color: #0f9d58;
+}
+
+.elderly-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-normal {
+    background-color: #e7f7ef;
+    color: #0f9d58;
+}
+
+.status-care {
+    background-color: #fff8e6;
+    color: #f4b400;
+}
+
+.status-urgent {
+    background-color: #fdeaea;
+    color: #db4437;
+}
+
+.view-details-btn {
+    background-color: #4361ee !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 0.4rem 1rem !important;
+    font-size: 0.85rem !important;
+    transition: all 0.3s ease !important;
+    color: white !important;
+}
+
+.view-details-btn:hover {
+    background-color: #3a56d4 !important;
+    transform: translateY(-2px) !important;
+}
