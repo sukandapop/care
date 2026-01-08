@@ -169,7 +169,7 @@
             <div class="row row-cols-2 row-cols-md-3 g-3">
                 <!-- เมนูบันทึกข้อมูลผู้สูงอายุ - ปรับปรุงแล้ว -->
                 <div class="col">
-                    <a href="record_elderly.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
+                    <a href="bedridden_data_record.php" class="menu-item card bg-light text-center p-3 h-100 shadow-sm">
                         <i class="bi bi-person-badge fs-2 mb-2 text-primary"></i>
                         <div class="menu-label fw-normal">บันทึกข้อมูลผู้สูงอายุ</div>
                     </a>

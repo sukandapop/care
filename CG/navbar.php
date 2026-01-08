@@ -372,7 +372,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="record_elderly.php">
+                        <a class="nav-link" href="bedridden_data_record.php">
                             <i class="fa-solid fa-user-plus"></i> บันทึกข้อมูลผู้สูงอายุ
                         </a>
                     </li>
