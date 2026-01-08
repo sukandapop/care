@@ -291,16 +291,16 @@
             const preview = document.getElementById(previewId);
             
             input.addEventListener('change', function(e) {
-                // ล้างรูปภาพเก่า
+                
                 preview.innerHTML = '';
                 
-                // ตรวจสอบว่ามีไฟล์ที่เลือกหรือไม่
+                
                 if (this.files && this.files.length > 0) {
-                    // วนลูปผ่านไฟล์ทั้งหมด
+                    
                     for (let i = 0; i < this.files.length; i++) {
                         const file = this.files[i];
                         
-                        // ตรวจสอบว่าเป็นรูปภาพหรือไม่
+                        
                         if (!file.type.match('image.*')) {
                             alert('กรุณาเลือกไฟล์รูปภาพเท่านั้น');
                             continue;
@@ -309,17 +309,17 @@
                         const reader = new FileReader();
                         
                         reader.onload = function(e) {
-                            // สร้างองค์ประกอบรูปภาพ
+                            
                             const img = document.createElement('img');
                             img.src = e.target.result;
                             
-                            // สร้างปุ่มลบ
+                            // ปุ่มลบ
                             const removeBtn = document.createElement('button');
                             removeBtn.textContent = '×';
                             removeBtn.className = 'remove-photo';
                             removeBtn.onclick = function() {
                                 preview.removeChild(div);
-                                // ในทางปฏิบัติอาจต้องลบไฟล์จาก input ด้วย
+                                
                             };
                             
                             // สร้าง div สำหรับรูปภาพและปุ่มลบ

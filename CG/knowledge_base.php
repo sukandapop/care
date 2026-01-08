@@ -146,16 +146,15 @@
             day: 'numeric'
         });
         
-        // Event Listeners
         fileUploadArea.addEventListener('click', () => {
             fileInput.click();
         });
         
         fileInput.addEventListener('change', handleFileSelect);
         
-        // จัดการเมื่อเลือกไฟล์
+        
         function handleFileSelect(e) {
-            const files = e.target.files;
+            const files = e.target.files
             selectedFiles = Array.from(files);
             updateFileList();
             updateFilePreview();
@@ -241,7 +240,6 @@
         knowledgeForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // อัพเดตตัวอย่างความรู้
             updatePreview();
             
             // แสดงการแจ้งเตือน
@@ -262,7 +260,7 @@
             if (knowledgeTitle.value.trim() === '' || 
                 knowledgeCategory.value === '' || 
                 knowledgeContent.value.trim() === '') {
-                return; // อย่าอัพเดตตัวอย่างถ้าข้อมูลไม่ครบ
+                return;
             }
             
             // อัพเดตข้อมูลตัวอย่าง
@@ -282,7 +280,6 @@
             previewCategory.textContent = categoryMap[knowledgeCategory.value] || knowledgeCategory.value;
             previewContent.textContent = knowledgeContent.value;
             
-            // แสดงตัวอย่างไฟล์
             updateFilePreview();
             
             // แสดงตัวอย่างความรู้และซ่อนสถานะว่าง

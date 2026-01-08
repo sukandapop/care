@@ -132,7 +132,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="alertList">
-                                    <!-- ข้อมูลจะถูกเพิ่มโดย JavaScript -->
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="card-body">
                         <div id="todayAlerts">
-                            <!-- การแจ้งเตือนจะถูกเพิ่มโดย JavaScript -->
+                            
                         </div>
                     </div>
                 </div>
@@ -313,7 +313,7 @@
         document.getElementById('medicineAlertForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // รับค่าจากฟอร์ม
+            
             const elderlyName = document.getElementById('elderlySelect').options[document.getElementById('elderlySelect').selectedIndex].text;
             const medicineName = document.getElementById('medicineName').value;
             const startDate = document.getElementById('startDate').value;
@@ -327,7 +327,7 @@
             
             // สร้างออบเจ็กต์การแจ้งเตือนใหม่
             const newAlert = {
-                id: Date.now(), // ใช้ timestamp เป็น ID
+                id: Date.now(), 
                 elderly: elderlyName,
                 medicine: medicineName,
                 dosage: document.getElementById('dosage').value,
@@ -340,23 +340,22 @@
                 status: "active"
             };
             
-            // เพิ่มการแจ้งเตือนใหม่ลงในรายการ
+            
             sampleAlerts.push(newAlert);
             
-            // อัพเดทการแสดงผล
+            
             updateAlertList();
             updateTodayAlerts();
             
-            // แสดงการยืนยัน
+            
             alert(`ตั้งค่าแจ้งเตือนยา ${medicineName} สำหรับ ${elderlyName} สำเร็จแล้ว`);
             
-            // รีเซ็ตฟอร์ม
+            
             this.reset();
             selectedTimes.length = 0;
             document.getElementById('selectedTimes').value = '';
             timeBadges.forEach(badge => badge.classList.remove('active'));
             
-            // ตั้งค่าวันที่เริ่มต้นและสิ้นสุดใหม่
             document.getElementById('startDate').valueAsDate = new Date();
             const newEndDate = new Date();
             newEndDate.setDate(newEndDate.getDate() + 7);
@@ -465,7 +464,6 @@
         function editAlert(id) {
             const alert = sampleAlerts.find(a => a.id === id);
             if (alert) {
-                // ในสภาพแวดล้อมจริง จะเป็นการโหลดข้อมูลลงในฟอร์มเพื่อแก้ไข
                 alert(`กำลังแก้ไขการแจ้งเตือน: ${alert.medicine} - ${alert.elderly}`);
             }
         }
@@ -482,7 +480,6 @@
         }
 
         function markAsTaken(alertId, time) {
-            // ในสภาพแวดล้อมจริง จะเป็นการบันทึกว่าผู้สูงอายุรับประทานยาแล้ว
             alert(`บันทึกการรับประทานยาเรียบร้อยแล้ว (เวลา ${time})`);
         }
 

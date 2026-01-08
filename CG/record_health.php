@@ -159,21 +159,18 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ตั้งค่าวันที่ปัจจุบันเป็นค่าเริ่มต้น
         document.getElementById('recordDate').valueAsDate = new Date();
         
-        // จัดการการส่งฟอร์ม
+        
         document.getElementById('healthRecordForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // รับค่าจากฟอร์ม
+            
             const elderlyName = document.getElementById('elderlySelect').options[document.getElementById('elderlySelect').selectedIndex].text;
             const recordDate = document.getElementById('recordDate').value;
             
-            // แสดงการยืนยัน
             alert(`บันทึกข้อมูลสุขภาพสำหรับ ${elderlyName} วันที่ ${recordDate} สำเร็จแล้ว`);
             
-            // รีเซ็ตฟอร์ม
             this.reset();
             document.getElementById('recordDate').valueAsDate = new Date();
         });
@@ -184,11 +181,10 @@
 
         function calculateBMI() {
             const weight = parseFloat(document.getElementById('weight').value);
-            const height = parseFloat(document.getElementById('height').value) / 100; // แปลงเป็นเมตร
+            const height = parseFloat(document.getElementById('height').value) / 100; 
             
             if (weight && height) {
                 const bmi = (weight / (height * height)).toFixed(1);
-                // สามารถแสดงค่า BMI ได้ที่นี่หากต้องการ
                 console.log(`BMI: ${bmi}`);
             }
         }

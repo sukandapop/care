@@ -115,32 +115,25 @@
         // เลือกระดับความเร่งด่วน
         document.querySelectorAll('.urgency-option').forEach(option => {
             option.addEventListener('click', function() {
-                // ลบคลาส selected จากทุกตัวเลือก
+                
                 document.querySelectorAll('.urgency-option').forEach(opt => {
                     opt.classList.remove('selected');
                 });
                 
-                // เพิ่มคลาส selected ให้ตัวเลือกที่ถูกคลิก
-                this.classList.add('selected');
-                
-                // ตั้งค่าค่าใน input hidden
+                this.classList.add('selected');  
                 document.getElementById('urgencyLevel').value = this.getAttribute('data-level');
             });
         });
         
-        // จัดการการส่งฟอร์ม
         document.getElementById('emergencyForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // ตรวจสอบว่ามีการเลือกระดับความเร่งด่วนหรือไม่
             const urgencyLevel = document.getElementById('urgencyLevel').value;
             if (!urgencyLevel) {
                 alert('กรุณาเลือกระดับความเร่งด่วน');
                 return;
             }
             
-            // ในสถานการณ์จริง ข้อมูลจะถูกส่งไปยังเซิร์ฟเวอร์
-            // สำหรับตัวอย่างนี้ เราจะแสดงข้อความยืนยัน
             
             const reporterName = document.getElementById('reporterName').value;
             const problemType = document.getElementById('problemType').value;
@@ -160,7 +153,6 @@
             
             alert(`ขอบคุณ ${reporterName} สำหรับการแจ้งปัญหา\n\nประเภทปัญหา: ${document.getElementById('problemType').options[document.getElementById('problemType').selectedIndex].text}\nระดับความเร่งด่วน: ${urgencyText}\n\nCM จะติดต่อกลับไปในเร็วๆ นี้`);
             
-            // รีเซ็ตฟอร์ม
             this.reset();
             document.querySelectorAll('.urgency-option').forEach(opt => {
                 opt.classList.remove('selected');
